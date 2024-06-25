@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MultiRangeSlider from "./multirangeslider"
 export default function RangeAccordion({ title, content }) {
     const [isOpen, setIsOpen] = useState(false);

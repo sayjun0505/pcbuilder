@@ -2,7 +2,7 @@
 import Infotable from "../components/infotable"
 import Filters from "../components/filters"
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 
