@@ -330,7 +330,7 @@ export default function Home() {
     }, [filtervalue, all])
 
     return (
-        <div className="px-8 flex flex-row justify-between">
+        <div className="w-full flex flex-row justify-between">
             <div className="w-1/4 h-screen">
                 <Filters condition={filtervalue} />
             </div>
