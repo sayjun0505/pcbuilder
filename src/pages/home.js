@@ -2,14 +2,14 @@
 import Infotable from "../components/infotable"
 import Filters from "../components/filters"
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 
 
 export default function Home() {
     const [filtervalue, setFiltervalue] = useState("")
     const [showdata, setShowdata] = useState([]);
-    const all = [
+    const all = useMemo(() => [
         {
             id: "asdfe3f",
             img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
@@ -310,23 +310,24 @@ export default function Home() {
             shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
             shopicon: "https://pc-builder.io/img/amazon-icon.svg"
         }
-    ]
+    ], []);
     useEffect(() => {
         setShowdata(all)
     }, [all])
 
-    const filterData = (value, list) => {
-        if (value === "") {
-            return list;
-        } else {
-            const filtered = list.filter(item => item.title.toLowerCase().includes(filtervalue.toLowerCase()));
-            return filtered;
-        }
-    }
+
     useEffect(() => {
+        const filterData = (value, list) => {
+            if (value === "") {
+                return list;
+            } else {
+                const filtered = list.filter(item => item.title.toLowerCase().includes(filtervalue.toLowerCase()));
+                return filtered;
+            }
+        }
         let x = filterData(filtervalue, all);
         setShowdata(x)
-    }, [filtervalue, all, filterData])
+    }, [filtervalue, all])
 
     return (
         <div className="px-8 flex flex-row justify-between">
