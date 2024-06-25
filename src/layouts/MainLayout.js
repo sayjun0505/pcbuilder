@@ -10,13 +10,16 @@ const MainLayout = ({ children }) => {
         document.documentElement.scrollTo(0, 0);
     }, [location.pathname]);
     return (
-        <div>
-            <Topbar />
-            <Header />
-            <Outlet />
-            <Footer />
-            <Bottom />
+        <div className='w-full flex items-center'>
+            <div className='flex flex-col w-full'>
+                <Topbar />
+                <Header />
+                <Outlet />
+                <Footer />
+                <Bottom />
+            </div>
         </div>
+
     )
 };
 export default MainLayout;
