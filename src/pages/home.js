@@ -313,11 +313,8 @@ export default function Home() {
     ]
     useEffect(() => {
         setShowdata(all)
-    })
-    useEffect(() => {
-        let x = filterData(filtervalue, all);
-        setShowdata(x)
-    }, [filtervalue, all])
+    }, [all])
+
     const filterData = (value, list) => {
         if (value === "") {
             return list;
@@ -326,6 +323,11 @@ export default function Home() {
             return filtered;
         }
     }
+    useEffect(() => {
+        let x = filterData(filtervalue, all);
+        setShowdata(x)
+    }, [filtervalue, all, filterData])
+
     return (
         <div className="px-8 flex flex-row justify-between">
             <div className="w-1/4 h-screen">
