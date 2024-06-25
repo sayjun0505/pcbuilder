@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MultiRangeSlider from "./multirangeslider"
-export default function RangeAccordion({ title, content }) {
+export default function RangeAccordion({ title }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [contents, setContents] = useState([]);
+    // const [contents, setContents] = useState(content);
 
-    useEffect(() => {
-        setContents(content);
-    }, []);
+    // useEffect(() => {
+    //     setContents(content);
+    // }, []);
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);

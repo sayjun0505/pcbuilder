@@ -1,12 +1,12 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 export default function Accordion({ title, content }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [contents, setContents] = useState([]);
+    // const [contents, setContents] = useState(content);
 
-    useEffect(() => {
-        setContents(content);
-    }, []);
+    // useEffect(() => {
+    //     setContents(content);
+    // }, []);
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
@@ -31,7 +31,7 @@ export default function Accordion({ title, content }) {
             <div
                 className={`bg-gray-100 max-h-[200px] overflow-y-auto transition-height duration-3000 ${isOpen ? 'h-auto' : 'h-0 overflow-hidden'}`}
             >
-                {contents.map((item, index) => (
+                {content.map((item, index) => (
                     <div className='py-2 px-4 flex flex-row gap-2' key={index}>
                         <input type="checkbox" />
                         <span>{item}</span>
