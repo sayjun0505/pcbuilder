@@ -313,11 +313,11 @@ export default function Home() {
     ]
     useEffect(() => {
         setShowdata(all)
-    }, [])
+    })
     useEffect(() => {
         let x = filterData(filtervalue, all);
         setShowdata(x)
-    }, [filtervalue])
+    }, [filtervalue, all])
     const filterData = (value, list) => {
         if (value === "") {
             return list;
