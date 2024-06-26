@@ -8,7 +8,7 @@ export default function Record(propss) {
         navigate('/info', { state: data });
     }
     return (
-        <div className="hover:cursor-pointer border-2 border-white hover:border-gray-500 border-white-500 p-2  flex w-full flex-col " onClick={() => detail(propss.datainfo.id)}>
+        <div className="hover:cursor-pointer border-2 border-white hover:border-gray-500 border-white-500 p-2  flex w-full flex-col md:flex-row" onClick={() => detail(propss.datainfo.id)}>
             <div className="broder-2 border-blue-500 w-full sm:w-3/4 flex flex-row items-center gap-4 flex-start">
                 <div className="flex flex-col justify-center">
                     <img src={propss.datainfo.img} alt="AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor" className="w-16 h-16 sm:w-40 sm:h-32" />
