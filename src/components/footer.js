@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <div className="px-2 sm:px-32">
+        <div className="px-2 md:px-32">
             <div className="flex flex-row flex-wrap items-center rounded-xl p-12 text-white justify-between w-full bg-[#5c4ee2]">
                 <div className=""></div>
                 <div className="flex flex-col gap-4">
