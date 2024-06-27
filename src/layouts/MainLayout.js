@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
             <div className='flex flex-col w-full'>
                 <Topbar />
                 <Header />
-                <div className='px-2 sm:px-32 py-12'>
+                <div className='px-2 md:px-32 py-12'>
                     <Outlet />
                 </div>
                 <Footer />

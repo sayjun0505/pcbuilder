@@ -18,8 +18,8 @@ export default function Info() {
                     </div>
 
                 </div>
-                <div className='mt-8 w-full flex flex-col sm:flex-row justify-between'>
-                    <div className='w-full sm:w-[37%] flex flex-col'>
+                <div className='mt-8 w-full flex flex-col md:flex-row md:justify-between'>
+                    <div className='w-full md:w-[37%] flex flex-col'>
                         <div className='w-full rounded-lg text-center bg-[#ecf1fe] p-4'>Specifications</div>
                         <div className='flex flex-row justify-between h-16 items-center px-4 border-b-2 border-gray-300'>
                             <span className=''>Manufacturer</span>
@@ -109,7 +109,7 @@ export default function Info() {
                             <span className=''>Yes</span>
                         </div>
                     </div>
-                    <div className='w-full sm:w-[60%]'>
+                    <div className='mt-12 md:mt-0 w-full md:w-[60%]'>
                         <div className='bg-[#c2cad0] w-full h-32 text-center flex items-center justify-center  text-3xl sm:text-6xl text-bold'>Price Tracker</div>
                         <div className='relative w-full h-fit bg-[#dfdfdf]'>
                             <div className='py-20  w-full flex flex-col gap-2'>
@@ -163,8 +163,6 @@ export default function Info() {
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
