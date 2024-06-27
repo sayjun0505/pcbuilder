@@ -11,15 +11,15 @@ export default function Info() {
             
             <div className='w-full rounded-xl p-8 flex flex-col gap-8'>
                 <div className='flex flex-row justify-center items-center w-full gap-12'>
-                    <img src="https://pc-builder.io/images/cpu/1692871336_61345.jpg" alt="AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor" className='w-48'/>
+                    <img src="https://pc-builder.io/images/cpu/1692871336_61345.jpg" alt="AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor" className='w-32 sm:w-48'/>
                     <div className='flex flex-col gap-4'>
-                        <span className='mt-4 text-4xl font-bold'>AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor</span>
+                        <span className='mt-4 text-2xl sm:text-4xl font-bold'>AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor</span>
                         <div className='text-right'>registerID:{JSON.stringify(data, null, 2)}</div>
                     </div>
 
                 </div>
-                <div className='mt-8 w-full flex flex-row justify-between'>
-                    <div className='w-[37%] flex flex-col'>
+                <div className='mt-8 w-full flex flex-col sm:flex-row justify-between'>
+                    <div className='w-full sm:w-[37%] flex flex-col'>
                         <div className='w-full rounded-lg text-center bg-[#ecf1fe] p-4'>Specifications</div>
                         <div className='flex flex-row justify-between h-16 items-center px-4 border-b-2 border-gray-300'>
                             <span className=''>Manufacturer</span>
@@ -109,12 +109,12 @@ export default function Info() {
                             <span className=''>Yes</span>
                         </div>
                     </div>
-                    <div className='w-[60%]'>
-                        <div className='bg-[#c2cad0] w-full h-32 text-center flex items-center justify-center text-6xl text-bold'>Price Tracker</div>
+                    <div className='w-full sm:w-[60%]'>
+                        <div className='bg-[#c2cad0] w-full h-32 text-center flex items-center justify-center  text-3xl sm:text-6xl text-bold'>Price Tracker</div>
                         <div className='relative w-full h-fit bg-[#dfdfdf]'>
                             <div className='py-20  w-full flex flex-col gap-2'>
                                 <div className='flex w-full flex-row h-16 bg-[#c2cad0] p-4 justify-between items-center '>
-                                    <div className='w-[22%] text-left  text-3xl text-blue-700 font-bold'>
+                                    <div className='w-[22%] text-left   text-xl sm:text-3xl text-blue-700 font-bold'>
                                         Newegg
                                     </div>
                                     <div className='w-[22%] text-center '>$542</div>
@@ -122,25 +122,25 @@ export default function Info() {
                                     <div className='w-[22%] text-center '>65000</div>
                                 </div>
                                 <div className='flex w-full flex-row h-16 bg-[#c2cad0] p-4 justify-between items-center '>
-                                    <div className='w-[22%] text-left  text-3xl text-blue-700 font-bold'>amazon</div>
+                                    <div className='w-[22%] text-left   text-xl sm:text-3xl text-blue-700 font-bold'>amazon</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>65000</div>
                                 </div>
                                 <div className='flex w-full flex-row h-16 bg-[#c2cad0] p-4 justify-between items-center '>
-                                    <div className='w-[22%] text-left  text-3xl text-blue-700 font-bold'>BH</div>
+                                    <div className='w-[22%] text-left   text-xl sm:text-3xl text-blue-700 font-bold'>BH</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>65000</div>
                                 </div>
                                 <div className='flex w-full flex-row h-16 bg-[#c2cad0] p-4 justify-between items-center '>
-                                    <div className='w-[22%] text-left  text-3xl text-blue-700 font-bold'>Best Buy</div>
+                                    <div className='w-[22%] text-left   text-xl sm:text-3xl text-blue-700 font-bold'>Best Buy</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>65000</div>
                                 </div>
                                 <div className='flex w-full flex-row h-16 bg-[#c2cad0] p-4 justify-between items-center '>
-                                    <div className='w-[22%] text-left text-3xl text-blue-700 font-bold'>memory</div>
+                                    <div className='w-[22%] text-left  text-xl sm:text-3xl text-blue-700 font-bold'>memory</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>$542</div>
                                     <div className='w-[22%] text-center '>65000</div>
@@ -148,15 +148,15 @@ export default function Info() {
                             </div>
                             <div className='absolute top-0 w-full h-full flex flex-row justify-between px-8 '>
                                 <div className='w-[24%] '></div>
-                                <div className='w-[24%] bg-[#8dafbd] h-full opacity-30 text-white text-4xl flex items-center justify-between py-4 flex-col'>
+                                <div className='w-[24%] bg-[#8dafbd] h-full opacity-30 text-white text-xl sm:text-2xl md:text-4xl flex items-center justify-between py-4 flex-col'>
                                     <div className=''>Live Price</div>
                                     <div >$523</div>
                                 </div>
-                                <div className='w-[24%] h-full bg-[#90bda6] opacity-30 text-white text-4xl flex items-center justify-between py-4 flex-col'>
+                                <div className='w-[24%] h-full bg-[#90bda6] opacity-30 text-white  text-xl sm:text-4xl flex items-center justify-between py-4 flex-col'>
                                     <div >Last Price</div>
                                     <div >$523</div>
                                 </div>
-                                <div className='w-[24%] h-full bg-[#caa3a2] opacity-30 text-white text-4xl flex items-center justify-between py-4 flex-col'>
+                                <div className='w-[24%] h-full bg-[#caa3a2] opacity-30 text-white  text-xl sm:text-4xl flex items-center justify-between py-4 flex-col'>
                                     <div >Total</div>
                                     <div >4523</div>
                                 </div>

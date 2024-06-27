@@ -331,10 +331,10 @@ export default function Home() {
 
     return (
         <div className="w-full flex flex-row justify-between">
-            <div className="hidden sm:flex w-1/4 h-screen">
+            <div className="hidden md:flex w-1/4 h-screen">
                 <Filters condition={filtervalue} />
             </div>
-            <div className="p-2 sm:p-8 w-full sm:w-2/3 rounded-xl border-2 border-gray-500 flex flex-col gap-4 ">
+            <div className="p-2 sm:p-8 w-full md:w-2/3 rounded-xl border-2 border-gray-500 flex flex-col gap-4 ">
                 <div className='border-2 border-gray-200 w-full sm:w-1/2 h-12 rounded-xl px-4 flex justify-center items-center' >
                     <input type="text" className='w-full outline-none' onChange={(event) => setFiltervalue(event.target.value)} />
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
