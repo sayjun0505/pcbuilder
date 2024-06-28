@@ -12,8 +12,8 @@ export default function Bottom() {
               className="w-20 h-20"
             />
             <Link to="/" className="hidden sm:flex flex-row">
-              <span class="text-3xl font-bold text-[#18AE91]">PC</span>
-              <span class="ml-2 text-3xl font-bold text-white">Effective</span>
+              <span className="text-3xl font-bold text-[#18AE91]">PC</span>
+              <span className="ml-2 text-3xl font-bold text-white">Effective</span>
               <sup>{/* <small className="text-[22px]">™</small> */}</sup>
             </Link>
           </div>
