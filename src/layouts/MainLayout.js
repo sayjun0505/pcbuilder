@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
         <div className='w-full flex items-center'>
             <div className='flex flex-col w-full'>
                 <Topbar />
-                <Header />
+                {/* <Header /> */}
                 <div className='px-2 md:px-32 py-12'>
                     <Outlet />
                 </div>

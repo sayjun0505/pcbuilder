@@ -230,7 +230,7 @@ export default function Topbar() {
         }  flex-row bg-[#001119] py-4 px-8 justify-between`}
       >
         <div className="flex flex-col gap-4">
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Storage</span>
             <img
               className="w-20 h-20"
@@ -242,7 +242,7 @@ export default function Topbar() {
           <Link
             to="/cpu"
             onClick={()=>setShowproducts(false)}
-            className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center"
+            className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
           >
             <span>CPU</span>
             <img
@@ -254,7 +254,7 @@ export default function Topbar() {
           </Link>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Graphic Card</span>
             <img
               className="w-20 h-20"
@@ -263,10 +263,10 @@ export default function Topbar() {
               src="https://static.pcbuilder.net/assets/images/megamenu/graphics-card.png"
             />
           </div>
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>CPU Cooler</span>
             <img
-              className="w-20 h-20"
+              className="w-24 h-20"
               alt="cpu, processor, pc builder, pc part picker, build my pc"
               data-ll-status="loaded"
               src="https://static.pcbuilder.net/assets/images/megamenu/cpu-cooler.png"
@@ -274,7 +274,7 @@ export default function Topbar() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Power Supply</span>
             <img
               className="w-20 h-20"
@@ -283,7 +283,7 @@ export default function Topbar() {
               src="https://static.pcbuilder.net/assets/images/megamenu/power-supply.png"
             />
           </div>
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Motherboard</span>
             <img
               className="w-20 h-20"
@@ -294,7 +294,7 @@ export default function Topbar() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Case</span>
             <img
               className="w-20 h-20"
@@ -303,7 +303,7 @@ export default function Topbar() {
               src="https://static.pcbuilder.net/assets/images/megamenu/case.png"
             />
           </div>
-          <div className="border-b-2  border-t-[1px] border-r-[1px] border-l-[1px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#18AE91] flex flex-col gap-2 justify-center items-center">
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
             <span>Memory</span>
             <img
               className="w-20 h-20"
@@ -313,7 +313,7 @@ export default function Topbar() {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between mr-16">
           <div className="flex flex-col items-start gap-2">
             <span className="text-md text-gray-500 font-bold">Cooling</span>
             <span className="text-md  font-bold">Case Fans</span>
@@ -331,7 +331,7 @@ export default function Topbar() {
             <span className="text-md  font-bold">Webcam</span>
           </div>
         </div>
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between mr-16">
           <div className="flex flex-col items-start gap-2">
             <span className="text-md text-gray-500 font-bold">Peripherals</span>
             <span className="text-md  font-bold">Headphones</span>
@@ -353,7 +353,7 @@ export default function Topbar() {
             <span className="text-md  font-bold">Optical Drives</span>
           </div>
         </div>
-        <div className="flex flex-col justify-between mr-16">
+        <div className="flex flex-col justify-between mr-24">
           <div className="flex flex-col items-start gap-2">
             <span className="text-md text-gray-500 font-bold">Software</span>
             <span className="text-md  font-bold">Antivirus</span>
