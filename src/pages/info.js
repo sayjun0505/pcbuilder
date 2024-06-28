@@ -9,8 +9,8 @@ export default function Info() {
     return (
         <div>
             
-            <div className='w-full rounded-xl p-8 flex flex-col gap-8'>
-                <div className='flex flex-row justify-center items-center w-full gap-12'>
+            <div className='mt-36 w-full rounded-xl p-8 flex flex-col gap-8'>
+                <div className='flex flex-row justify-center items-center w-full gap-12 bg-white py-8 rounded-xl'>
                     <img src="https://pc-builder.io/images/cpu/1692871336_61345.jpg" alt="AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor" className='w-32 sm:w-48'/>
                     <div className='flex flex-col gap-4'>
                         <span className='mt-4 text-2xl sm:text-4xl font-bold'>AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor</span>
