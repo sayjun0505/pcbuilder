@@ -4,6 +4,7 @@ import Footer from '../components/footer';
 import Topbar from '../components/topbar';
 import { useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import Face from '../components/face';
 const MainLayout = ({ children }) => {
     const location = useLocation();
     useLayoutEffect(() => {
@@ -11,12 +12,12 @@ const MainLayout = ({ children }) => {
     }, [location.pathname]);
     return (
         <div className='w-full flex items-center'>
-            <div className='flex flex-col w-full'>
+            <div className='relative flex flex-col w-full'>
                 <Topbar />
                 {/* <Header /> */}
-                <div className='px-2 md:px-32 py-12 bg-[#dae2e5]'>
-                    <Outlet />
-                </div>
+                
+                {location.pathname === '/' ?<div className='w-full'> <Face /></div> :<div className='px-2 md:px-32 py-12 bg-[#dae2e5]'> <Outlet /></div>}
+                
                 <Footer />
                 <Bottom />
             </div>

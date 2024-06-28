@@ -22,7 +22,8 @@ export default function Topbar() {
   };
 
   return (
-    <nav className="relative w-full border-b-2 border-[#04151f] text-white">
+    <div className="absolute z-50 w-full">
+      <nav className=" relative w-full border-b-2 border-[#04151f] text-white">
       <header className="px-4 py-2 md:py-4 bg-[#001119]">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
@@ -376,5 +377,7 @@ export default function Topbar() {
         </div>
       </div>
     </nav>
+    </div>
+    
   );
 }
