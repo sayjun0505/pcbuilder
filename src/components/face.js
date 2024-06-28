@@ -6,7 +6,7 @@ export default function Face() {
         alt="bg"
         className="w-full h-full"
       />
-      <div className="absolute top-1/3 left-20 flex flex-col text-left gap-6">
+      <div className="absolute top-1/4 sm:top-1/3 left-4 mr-4 sm:mr-0 sm:left-20 flex flex-col text-left gap-6">
         <span className="text-white font-bold text-5xl">
           Performing with Excellence to
         </span>
