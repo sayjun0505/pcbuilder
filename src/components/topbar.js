@@ -1,6 +1,12 @@
 import search from "../assets/search.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function Topbar() {
   const [showproducts, setShowproducts] = useState(false);
@@ -213,7 +219,7 @@ export default function Topbar() {
               </svg>
             </div>
           </div>
-          <div className="flex flex-row p-4">
+          <div className="flex flex-row p-4 gap-4 ">
             <div className="flex flex-col justify-betwen items-center text-sm">
               <div className=" hover:text-[#18AE91] hover:cursor-pointer">
                 Forum
@@ -222,74 +228,101 @@ export default function Topbar() {
                 Blog
               </div>
             </div>
-            <div className="">
-              <button
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="dropdown"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-              >
-                Dropdown button{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  Options
+                  <ChevronDownIcon
+                    className="-mr-1 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
                   />
-                </svg>
-              </button>
-
-              <div
-                id="dropdown"
-                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownDefaultButton"
-                >
-                  <li>
-                    <a
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Earnings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>
+                </MenuButton>
               </div>
-            </div>
+
+              <MenuItems
+                transition
+                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="py-1">
+                  <MenuItem>
+                    {({ focus }) => (
+                      <div
+                        className={classNames(
+                          focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
+                        )}
+                      >
+                        {/* <div className="flex flex-row items-center"> */}
+                          <img
+                            className="w-8 h-6"
+                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                            alt="pc builder, pc part picker, build my pc"
+                          ></img>
+                          <span>Canada</span>
+                        </div>
+                      // </a>
+                    )}
+                  </MenuItem>
+                  <MenuItem>
+                    {({ focus }) => (
+                     <div
+                     className={classNames(
+                       focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
+                     )}
+                   >
+                          <img
+                            className="w-8 h-6"
+                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                            alt="pc builder, pc part picker, build my pc"
+                          ></img>
+                          <span>Canada</span>
+                        </div>
+                      // </a>
+                    )}
+                  </MenuItem>
+                  <MenuItem>
+                    {({ focus }) => (
+                     <div
+                     className={classNames(
+                       focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
+                     )}
+                   >
+                          <img
+                            className="w-8 h-6"
+                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                            alt="pc builder, pc part picker, build my pc"
+                          ></img>
+                          <span>Canada</span>
+                        </div>
+                      // </a>
+                    )}
+                  </MenuItem>
+                  <form method="POST" action="#">
+                    <MenuItem>
+                      {({ focus }) => (
+                        <button
+                          type="submit"
+                          className={classNames(
+                            focus
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block w-full px-4 py-2 text-left text-sm"
+                          )}
+                        >
+                          <div className="flex flex-row items-center">
+                            <img
+                              className="w-8 h-6"
+                              src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                              alt="pc builder, pc part picker, build my pc"
+                            ></img>
+                            <span>Canada</span>
+                          </div>
+                        </button>
+                      )}
+                    </MenuItem>
+                  </form>
+                </div>
+              </MenuItems>
+            </Menu>
           </div>
         </div>
         <div
