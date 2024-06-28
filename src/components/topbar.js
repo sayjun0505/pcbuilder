@@ -1,6 +1,7 @@
 import search from "../assets/search.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 export default function Topbar() {
   const [showproducts, setShowproducts] = useState(false);
   const handleHover = () => {
@@ -31,13 +32,13 @@ export default function Topbar() {
                 alt="PC Builder"
                 className="w-20 h-20"
               />
-              <div className="hidden sm:flex flex-row">
+              <Link to="/" className="hidden sm:flex flex-row">
                 <span class="text-3xl font-bold text-[#18AE91]">PC</span>
                 <span class="ml-2 text-3xl font-bold text-white">
                   Effective
                 </span>
                 <sup>{/* <small className="text-[22px]">™</small> */}</sup>
-              </div>
+              </Link>
             </div>
             <div className="flex items-center px-8">
               <img src={search} className="w-8" alt="alt" />
