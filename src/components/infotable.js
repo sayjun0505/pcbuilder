@@ -6,7 +6,7 @@ export default function Infotable(props) {
         setDataState(props.datas);
     }, [props.datas]);
     return (
-        <div className="flex flex-col text-gray-600 gap-2">
+        <div className="flex flex-col text-gray-600 gap-2 max-h-[680px] overflow-y-auto">
             {dataState.map((item, index) => (
                 <Record datainfo={item} key={index} />
             ))}
