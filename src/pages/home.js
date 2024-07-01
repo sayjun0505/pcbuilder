@@ -2,7 +2,7 @@
 import Infotable from "../components/infotable"
 import Filters from "../components/filters"
 import axios from 'axios';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 export default function Home() {
     const [filtervalue, setFiltervalue] = useState("")
     const [showdata, setShowdata] = useState([]);
@@ -10,30 +10,40 @@ export default function Home() {
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/alldata');
-                const tmp=response.data.map((item,index)=>{
+                const response = await axios.get('http://103.35.189.49:5000/api/alldata');
+                const tmp=response.data.data.map((item,index)=>{
+                    const cpuid=item._id;
+                    // let ar=[]
+                    // response.data.vendor.map((item)=>{
+                    //     // console.log(cpuid,item.cpuid)
+                    //     if(item.cpuid===cpuid){
+                    //         ar.push(item)
+                    //     }
+                    // })
+                    let ar = response.data.vendor.filter(item => item.cpuid === cpuid);
                     let t={
                         id:item._id,
                         img: item.imgurl,
                         review: "4.9",
-                        title: item.name.replace("Cpu ",""),
+                        title: item.name.replace("Cpu ","").replace(" Processor",""),
                         Manufacturer:item.Manufacturer,
                         ManufacturerURL:item.ManufacturerURL,
                         MPN:item.MPN,
-                        cores: 8,
+                        cores: item?.CoreCount||0,
                         bclock: "5GHZ",
-                        graphics: "Radeon",
-                        cclock: "4.2GHz",
-                        TDP: "120",
-                        multithread: "Yes",
+                        Socket: item?.Socket||"None",
+                        cclock: item?.CoreClock||0,
+                        CoreFamily: item?.CoreFamily,
+                        IncludesCooler: (item?.IncludesCooler)==="Nee"?"No":"Yes"||"None",
                         price: "384.00",
                         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-                        shopicon: "https://pc-builder.io/img/amazon-icon.svg"
+                        shopicon: "https://pc-builder.io/img/amazon-icon.svg",
+                        vendor:ar
                     }
                     return t;
                 })
                 setAll(tmp);
-                // console.log(response.data);
+                console.log(tmp);
             } catch (error) {
               console.error('Error fetching data:', error);
             }
@@ -41,308 +51,6 @@ export default function Home() {
       
           fetchData();
     },[])
-    // const all = useMemo(() => [
-    //     {
-    //         id: "asdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 7 7800X3D 4.2 GHz 8-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "awffe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665830715_12916.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 7600X 4.7 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "w5dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665744483_37542.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 5600X 3.7 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "h6dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1678083279_73348.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 7600 3.8 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "7fdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1703142812_13444.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i7-14700K 3.4 GHz 20-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "35dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i9-14900K 3.2 GHz 24-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "7udfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i5-12400F 2.5 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "sydfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 3600 3.6 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "53dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665830725_46370.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 7 7700X 4.5 GHz 8-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "7ddfe3f",
-    //         img: "	https://pc-builder.io/images/cpu/1665830691_2741.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 9 7950X3D 4.2 GHz 16-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "94dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 5600 3.5 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "85dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 7 5800X 3.8 GHz 8-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "9kdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 5 5500 3.6 GHz 6-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "9gdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i5-12600KF 3.7 GHz 10-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "12dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i7-12700K 3.6 GHz 12-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "7gdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 7 5700X 3.4 GHz 8-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "h3dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1692871336_61345.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i7-13700K 3.4 GHz 16-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "g7dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665830708_3354.jpg",
-    //         review: "4.9",
-    //         title: "Intel Core i5-12600K 3.7 GHz 10-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "c7dfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665830708_3354.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 7 5800X3D 3.4 GHz 8-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     },
-    //     {
-    //         id: "8jdfe3f",
-    //         img: "https://pc-builder.io/images/cpu/1665830716_81633.jpg",
-    //         review: "4.9",
-    //         title: "AMD Ryzen 9 7900X 4.7 GHz 12-Core Processor",
-    //         cores: 8,
-    //         bclock: "5GHZ",
-    //         graphics: "Radeon",
-    //         cclock: "4.2GHz",
-    //         TDP: "120",
-    //         multithread: "Yes",
-    //         price: "384.00",
-    //         shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-    //         shopicon: "https://pc-builder.io/img/amazon-icon.svg"
-    //     }
-    // ], []);
     useEffect(() => {
         setShowdata(all)
     }, [all])
