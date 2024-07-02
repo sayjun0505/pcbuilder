@@ -84,10 +84,17 @@ export default function Record(propss) {
                         title="Bpm-power"
                     />
                 </div>
-            ) : (
+            ) : (item.vendorname === "azerty" ?
                 <div className="bg-gray-500 p-2 rounded-xl">
                     <img
                         src="https://azerty.nl/static/version1719466751/frontend/Azerty/hyva/nl_NL/images/logo.svg"
+                        title=""
+                        alt="Azerty"
+                        className="w-16 h-8"
+                    />
+                </div>:<div className="bg-gray-500 p-2 rounded-xl">
+                    <img
+                        src="https://www.andorrainformatica.com/img/thehpshop-logo-1553100322.jpg"
                         title=""
                         alt="Azerty"
                         className="w-16 h-8"

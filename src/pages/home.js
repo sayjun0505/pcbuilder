@@ -11,7 +11,7 @@ export default function Home() {
         const fetchData = async () => {
             try {
                 // const response = await axios.get('http://103.35.189.49:5000/api/alldata');
-                const response = await axios.get('https://d0de-103-35-189-49.ngrok-free.app/api/alldata');
+                const response = await axios.get('http://localhost:5000/api/alldata');
                 const tmp=response.data.data.map((item,index)=>{
                     const cpuid=item._id;
                     // let ar=[]
