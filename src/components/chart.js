@@ -5,19 +5,17 @@ const ApexChart = (data) => {
   const [series] = useState([
     {
       name: "Price",
-      data: data.data.map(item => item.price)
+      data: data.data.map(item => item.price),
+      
     }
   ]);
 
   const [options] = useState({
-    chart: {
-      width: "50%",
-      height: 500,
-      type: "bar"
-    },
+    
+    // Other options...
     plotOptions: {
       bar: {
-        borderRadius: 10,
+        columnWidth: "50%",
         dataLabels: {
           position: "top" // top, center, bottom
         }
@@ -34,58 +32,23 @@ const ApexChart = (data) => {
         colors: ["#304758"]
       }
     },
-   
     xaxis: {
-      categories:data.data.map(item => item.vendorname),
-      position: "top",
-      axisBorder: {
-        show: true
-      },
-      axisTicks: {
-        show: false
-      },
-      crosshairs: {
-        fill: {
-          type: "gradient",
-          gradient: {
-            colorFrom: "#D8E3F0",
-            colorTo: "#BED1E6",
-            stops: [0, 100],
-            opacityFrom: 0.4,
-            opacityTo: 0.5
-          }
+      categories: data.data.map(item => item.vendorname),
+      labels: {
+        style: {
+          colors: ['#ff00ff', '#adad00', '#0000ff'] // Set different label colors
         }
       },
-      tooltip: {
-        enabled: false
-      }
     },
     yaxis: {
-      axisBorder: {
-        show: true
-      },
-      axisTicks: {
-        show: true
-      },
       labels: {
-        show: true,
-        formatter: function (val) {
-          return val + "€";
+        style: {
+          colors: ['#ff00ff', '#00ff00', '#0000ff'] // Set different label colors
         }
       }
     },
-    title: {
-      text: "Price chart",
-      floating: true,
-      offsetY: 330,
-      align: "center",
-      style: {
-        color: "#444"
-      }
-    },
-    colors: ['#ff00ff', '#00ff00', '#0000ff'],
+    
   });
-
   return (
     <div>
       <div id="chart">
