@@ -151,7 +151,8 @@ export default function Info() {
                   </div>
                 </div>
                 <div className="mx-32">
-                {/* {fromdb.vendor &&<Example data={fromdb.vendor}/>} */}
+                  {/* {console.log(fromdb.vendor)} */}
+                {fromdb.vendor &&<Example data={fromdb.vendor}/>}
                 </div>
               </div>
             </div>

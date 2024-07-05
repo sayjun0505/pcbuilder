@@ -34,7 +34,6 @@ const ApexChart = (data) => {
         colors: ["#304758"]
       }
     },
-   
     xaxis: {
       categories:data.data.map(item => item.vendorname),
       position: "top",
@@ -57,20 +56,20 @@ const ApexChart = (data) => {
         }
       },
       tooltip: {
-        enabled: false
+        enabled: true
       }
     },
     yaxis: {
       axisBorder: {
-        show: true
+        show: false
       },
       axisTicks: {
-        show: true
+        show: false
       },
       labels: {
-        show: true,
+        show: false,
         formatter: function (val) {
-          return val + "€";
+          return val + "%";
         }
       }
     },
@@ -82,8 +81,7 @@ const ApexChart = (data) => {
       style: {
         color: "#444"
       }
-    },
-    colors: ['#ff00ff', '#00ff00', '#0000ff'],
+    }
   });
 
   return (
