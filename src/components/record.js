@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 export default function Record(propss) {
   // const [data, setData] = useState(propss.datainfo);
-  console.log(propss.datainfo.vendor);
+  // console.log(propss.datainfo.vendor);
   const navigate = useNavigate();
   const detail = (data) => {
     // console.log("data.id:", data.id)

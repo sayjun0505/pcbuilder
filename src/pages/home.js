@@ -37,7 +37,7 @@ export default function Home() {
                     return t;
                 })
                 setAll(tmp);
-                console.log(tmp);
+                // console.log(tmp);
             } catch (error) {
               console.error('Error fetching data:', error);
             }
