@@ -182,7 +182,7 @@ export default function Filters({handleCoreCountValuesChanges ,condition}) {
         title="Core Count"
         onValuesChange={handleCoreCountValuesChange}
       />
-      <Accordion title="Manufacturers" content={manufacturers}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      {/* <Accordion title="Manufacturers" content={manufacturers}  onCheckedItemsChange={handleCheckedItemsChange}/>
       <Accordion title="Series" content={series}  onCheckedItemsChange={handleCheckedItemsChange}/>
       <Accordion title="Microarchitecture" content={microarchitecture}  onCheckedItemsChange={handleCheckedItemsChange}/>
       <Accordion title="Core Family" content={corefamily}  onCheckedItemsChange={handleCheckedItemsChange}/>
@@ -194,7 +194,7 @@ export default function Filters({handleCoreCountValuesChanges ,condition}) {
         onCheckedItemsChange={handleCheckedItemsChange}
       />
       <Accordion title="ECC Support" content={eccsupport}  onCheckedItemsChange={handleCheckedItemsChange}/>
-      <Accordion title="Includes Cooler" content={incooler}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Includes Cooler" content={incooler}  onCheckedItemsChange={handleCheckedItemsChange}/> */}
     </div>
   );
 }
