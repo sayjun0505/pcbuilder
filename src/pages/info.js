@@ -128,7 +128,8 @@ export default function Info() {
                             <div className="w-[22%] text-center ">
                               {item.price}
                             </div>
-                            <div className="w-[22%] text-center ">{(100*(parseFloat(item.price.replace("€","").replace(",","."))-parseFloat(avg))/parseFloat(avg)).toFixed(2)}%</div>
+                            <div className="w-[22%] text-center ">{item.prev}</div>
+                            {/* <div className="w-[22%] text-center ">{(100*(parseFloat(item.price.replace("€","").replace(",","."))-parseFloat(avg))/parseFloat(avg)).toFixed(2)}%</div> */}
                             <div className="w-[24%] text-center ">{item.date}</div>
                           </div>
                         ))}

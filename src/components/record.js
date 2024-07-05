@@ -69,7 +69,7 @@ export default function Record(propss) {
       </div>
       <div className=" flex flex-col justify-between py-0 sm:py-4 -mt-8 sm:mt-0">
         <div className="flex justify-end w-full font-black text-bold text-xl text-blue-700 test-right">
-          {/* {propss.datainfo.vendor[0].price} */}
+          {/* {propss.datainfo.vendor} */}
           {propss.datainfo.vendor.length===1?propss.datainfo.vendor[0].price:Math.min(...propss.datainfo.vendor.map(vendor => parseFloat(vendor.price.replace("€","").replace(",",".")))).toFixed(2)+"€"}
         </div>
         <div className="flex flex-row w-full items-center justify-end gap-4 ">
