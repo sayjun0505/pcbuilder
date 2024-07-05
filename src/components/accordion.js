@@ -1,17 +1,21 @@
 
-import React, { useState } from 'react';
-export default function Accordion({ title, content }) {
+import React, { useState,useEffect } from 'react';
+export default function Accordion({ title, content, onCheckedItemsChange  }) {
     const [isOpen, setIsOpen] = useState(false);
-    // const [contents, setContents] = useState(content);
-
-    // useEffect(() => {
-    //     setContents(content);
-    // }, []);
-
+    const [checkedItems, setCheckedItems] = useState([]);
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
     };
-
+    const handleCheckboxChange = (item) => {
+        if (checkedItems.includes(item)) {
+            setCheckedItems(checkedItems.filter((checkedItem) => checkedItem !== item));
+        } else {
+            setCheckedItems([...checkedItems, item]);
+        }
+    };
+    useEffect(() => {
+        onCheckedItemsChange(checkedItems);
+    }, [checkedItems, onCheckedItemsChange]);
     return (
         <div className=" overflow-hidden">
             <div
@@ -33,7 +37,7 @@ export default function Accordion({ title, content }) {
             >
                 {content.map((item, index) => (
                     <div className='py-2 px-4 flex flex-row gap-2' key={index}>
-                        <input type="checkbox" />
+                        <input type="checkbox"  onChange={() => handleCheckboxChange(item)} />
                         <span>{item}</span>
                     </div>
                 ))}

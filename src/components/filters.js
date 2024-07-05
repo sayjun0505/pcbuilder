@@ -159,13 +159,18 @@ export default function Filters({handleCoreCountValuesChanges ,condition}) {
   const manufacturers = ["All", "AMD", "Intel"];
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
+  const [checkedList, setCheckedList] = useState([]);
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
     setMaxvalCoreCount(newMaxval);
     handleCoreCountValuesChanges(newMinval, newMaxval);
   };
+  const handleCheckedItemsChange = (checkedItems) => {
+    console.log(checkedItems)
+    setCheckedList(checkedItems);
+};
   return (
-    <div className="w-full border-2 border-gray-500 rounded-xl">
+    <div className="w-full rounded-xl">
       <div className="m-2 bg-gray-200 rounded-xl p-4 flex flex-row items-start gap-4">
         <input type="checkbox" className="mt-2" />
         <div className="flex flex-col justify-start">
@@ -177,18 +182,19 @@ export default function Filters({handleCoreCountValuesChanges ,condition}) {
         title="Core Count"
         onValuesChange={handleCoreCountValuesChange}
       />
-      <Accordion title="Manufacturers" content={manufacturers} />
-      <Accordion title="Series" content={series} />
-      <Accordion title="Microarchitecture" content={microarchitecture} />
-      <Accordion title="Core Family" content={corefamily} />
-      <Accordion title="Socket" content={socketfilter} />
-      <Accordion title="Integrated Graphics" content={intgraph} />
+      <Accordion title="Manufacturers" content={manufacturers}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Series" content={series}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Microarchitecture" content={microarchitecture}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Core Family" content={corefamily}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Socket" content={socketfilter}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Integrated Graphics" content={intgraph}  onCheckedItemsChange={handleCheckedItemsChange}/>
       <Accordion
         title="Simultaneous Multithreading"
         content={multithreadcontent}
+        onCheckedItemsChange={handleCheckedItemsChange}
       />
-      <Accordion title="ECC Support" content={eccsupport} />
-      <Accordion title="Includes Cooler" content={incooler} />
+      <Accordion title="ECC Support" content={eccsupport}  onCheckedItemsChange={handleCheckedItemsChange}/>
+      <Accordion title="Includes Cooler" content={incooler}  onCheckedItemsChange={handleCheckedItemsChange}/>
     </div>
   );
 }
