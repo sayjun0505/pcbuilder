@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-const MultiRangeSlider = ({ min, max, symbol }) => {
+const MultiRangeSlider = ({ min, max, minval, maxval, symbol, onValuesChange }) => {
     const [minVal,
         setMinVal] = useState(min);
     const [maxVal,
@@ -21,13 +21,15 @@ const MultiRangeSlider = ({ min, max, symbol }) => {
             range.current.style.left = `${minPercent}%`;
             range.current.style.width = `${maxPercent - minPercent}%`;
         }
+        onValuesChange(minPercent, maxPercent);
+        // console.log(minPercent,maxPercent)
     }, [minVal, getPercent]);
 
     // Set width of the range to decrease from the right side
     useEffect(() => {
         const minPercent = getPercent(minValRef.current);
         const maxPercent = getPercent(maxVal);
-
+        onValuesChange(minPercent, maxPercent);
         if (range.current) {
             range.current.style.width = `${maxPercent - minPercent}%`;
         }
@@ -70,7 +72,7 @@ const MultiRangeSlider = ({ min, max, symbol }) => {
                         className={`slider__left-value`}
                         style={{
                             left: `${getPercent(minVal)}%`, background: `url("https://raw.githubusercontent.com/sayjun0505/carse…ges/range.svg?token=A67VWOA3TGFTU4Q5MX7CFALGPCTI2")`, backgroundSize: "cover",
-                        }}>{minVal === 0 ? "Min Price" : symbol + (minVal * 1000 + 7000).toLocaleString()}</div>
+                        }}>{minVal === 0 ? "Min Price" : symbol + (minVal).toLocaleString()}</div>
                 </div>
 
                 <div className="slider" style={{ width: "calc(100% - 34px)", margin: "auto" }}>
@@ -78,7 +80,7 @@ const MultiRangeSlider = ({ min, max, symbol }) => {
                         className="slider__right-value"
                         style={{
                             left: `${getPercent(maxVal)}%`, background: `url("https://raw.githubusercontent.com/sayjun0505/carse…ges/range.svg?token=A67VWOA3TGFTU4Q5MX7CFALGPCTI2")`, backgroundSize: "cover",
-                        }}>{maxVal === 0 ? "Max Price" : symbol + (maxVal * 1000 + 7000).toLocaleString()}</div>
+                        }}>{maxVal === 0 ? "Max Price" : symbol + (maxVal).toLocaleString()}</div>
                 </div>
             </div>
         </div>
