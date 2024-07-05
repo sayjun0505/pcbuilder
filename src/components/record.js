@@ -30,12 +30,11 @@ export default function Record(propss) {
           </div>
         </div>
         <div className="h-full py-0 sm:py-4 flex w-full flex-col justify-between">
-          <a
-            href="https://pc-builder.io/cpu/amd-ryzen-7-7800x3d-p52516"
+          <div
             className=" font-black text-bold text-lg sm:text-2xl "
           >
             {propss.datainfo.title}
-          </a>
+          </div>
           <div className="hidden sm:flex flex-row w-full justify-between">
             <div className="w-1/2 gap-2 flex flex-col justify-start">
               <div className="col-lg-6 col-md-6 col-12 gy-1 col-12">

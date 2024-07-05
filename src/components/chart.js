@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
-const ApexChart = () => {
-  const [series] = useState([
-    {
-      name: "Inflation",
-      data: [2.3, 3.1, 4.0, 10.1]
-    }
-  ]);
+const ApexChart = (data) => {
+  console.log(data)
+  const [series,setSeries]=useState({})
+  useEffect(()=>{
+    setSeries({
+      name: "Price",
+      data: data.data.forEach(item => item.price)
+    })
+  },data)
+  // const [series] = useState([
+  //   {
+  //     name: "Price",
+  //     data: data.data.forEach(item => item.price)
+  //   }
+  // ]);
 
   const [options] = useState({
     chart: {

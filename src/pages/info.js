@@ -128,8 +128,8 @@ export default function Info() {
                             <div className="w-[22%] text-center ">
                               {item.price}
                             </div>
-                            <div className="w-[22%] text-center ">$542</div>
-                            <div className="w-[22%] text-center ">65000</div>
+                            <div className="w-[22%] text-center ">{(100*(parseFloat(item.price.replace("€","").replace(",","."))-parseFloat(avg))/parseFloat(avg)).toFixed(2)}%</div>
+                            <div className="w-[24%] text-center ">{item.date}</div>
                           </div>
                         ))}
                     </div>
@@ -140,18 +140,18 @@ export default function Info() {
                         <div>{avg}€</div>
                       </div>
                       <div className="w-[24%] h-full bg-[#90bda6] opacity-30 text-white  text-xl sm:text-4xl flex items-center justify-between py-4 flex-col">
-                        <div>Registered</div>
-                        <div>$523</div>
+                        <div>Diff</div>
+                        <div></div>
                       </div>
                       <div className="w-[24%] h-full bg-[#caa3a2] opacity-30 text-white  text-xl sm:text-4xl flex items-center justify-between py-4 flex-col">
-                        <div>Passed</div>
-                        <div>4523</div>
+                        <div>Registered</div>
+                        <div></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="mx-32">
-                  <Example />
+                {/* {fromdb.vendor &&<Example data={fromdb.vendor}/>} */}
                 </div>
               </div>
             </div>
