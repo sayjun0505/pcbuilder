@@ -71,7 +71,7 @@ export default function Record(propss) {
         </div>
         <div className="flex flex-row w-full items-center justify-end gap-4 ">
           {propss.datainfo.vendor.map((item, key) => {
-            return item.vendorname === "bmp" ? (
+            return item.vendorname === "bpm" ? (
                 <div key={key} className="bg-gray-500 p-2 rounded-xl">
                     <img
                         id="imgLogo"
