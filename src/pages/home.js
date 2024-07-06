@@ -53,6 +53,7 @@ export default function Home() {
     };
     fetchData();
     const interval = setInterval(() => {
+      console.log("call fetch")
       fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
     }, 60000);
 
