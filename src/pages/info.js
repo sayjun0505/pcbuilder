@@ -18,7 +18,7 @@ export default function Info() {
         const response = await axios.get(url);
         const view = response.data;
         var x=0.0;
-        view.vendor.map((i)=>x+=parseFloat(i.price.replace("€","").replace(",",".")))
+        view.vendor.map((i)=>x+=i.price)
         setAvg((x/view.vendor.length).toFixed(2).toString())
         if (!view || !view.data) {
           return null; // or handle the condition appropriately
