@@ -11,11 +11,7 @@ export default function Home() {
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const socket = useContext(SocketContext);
-  useEffect(() => {
-    socket.on("pcbuilder_bpm", (servertime) => {
-      console.log("servertime:", servertime);
-    });
-  }, [socket]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
