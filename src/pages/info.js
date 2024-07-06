@@ -9,7 +9,7 @@ export default function Info() {
     JSON.stringify(data, null, 2).replace(/"/g, "")
   );
   const [fromdb, setFromdb] = useState({});
-  const [avg, setAvg] = useState("0.0");
+  const [avg, setAvg] = useState(0.0);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,7 +19,7 @@ export default function Info() {
         const view = response.data;
         var x=0.0;
         view.vendor.map((i)=>x+=i.price)
-        setAvg((x/view.vendor.length).toFixed(2).toString())
+        setAvg((x/view.vendor.length).toFixed(2))
         if (!view || !view.data) {
           return null; // or handle the condition appropriately
         }
