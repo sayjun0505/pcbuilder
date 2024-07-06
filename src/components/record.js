@@ -1,11 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 export default function Record(propss) {
-  // const [data, setData] = useState(propss.datainfo);
-  // console.log(propss.datainfo.vendor);
   const navigate = useNavigate();
   const detail = (data) => {
-    // console.log("data.id:", data.id)
     navigate("/info", { state: data });
   };
   return (
@@ -75,7 +72,7 @@ export default function Record(propss) {
         <div className="flex flex-row w-full items-center justify-end gap-4 ">
           {propss.datainfo.vendor.map((item, key) => {
             return item.vendorname === "bmp" ? (
-                <div className="bg-gray-500 p-2 rounded-xl">
+                <div key={key} className="bg-gray-500 p-2 rounded-xl">
                     <img
                         id="imgLogo"
                         src="https://www.bpm-power.com/var/logo/logo_5.jpg"
@@ -85,21 +82,21 @@ export default function Record(propss) {
                     />
                 </div>
             ) : (item.vendorname === "azerty" ?
-                <div className="bg-gray-500 p-2 rounded-xl">
+                <div key={key} className="bg-gray-500 p-2 rounded-xl">
                     <img
                         src="https://azerty.nl/static/version1719466751/frontend/Azerty/hyva/nl_NL/images/logo.svg"
                         title=""
                         alt="Azerty"
                         className="w-16 h-8"
                     />
-                </div>:(item.vendorname === "andorr" ?<div className="bg-gray-500 p-2 rounded-xl">
+                </div>:(item.vendorname === "andorr" ?<div key={key} className="bg-gray-500 p-2 rounded-xl">
                     <img
                         src="https://www.andorrainformatica.com/img/thehpshop-logo-1553100322.jpg"
                         title=""
                         alt="Azerty"
                         className="w-16 h-8"
                     />
-                </div>:<div className="bg-gray-500 p-2 rounded-xl">
+                </div>:<div key={key} className="bg-gray-500 p-2 rounded-xl">
                     <img
                         src="https://www.rueducommerce.fr/images/rdc/Logo-RDC-1.svg"
                         title=""
