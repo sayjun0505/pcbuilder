@@ -1,14 +1,23 @@
 import Infotable from "../components/infotable";
 import Filters from "../components/filters";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext,useEffect, useState } from "react";
+import { SocketContext } from '../context/socket';
+
+
+
 export default function Home() {
   const [filtervalue, setFiltervalue] = useState("");
   const [showdata, setShowdata] = useState([]);
   const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
-
+  const socket = useContext(SocketContext);
+useEffect(()=>{
+  socket.on("pcbuilder",servertime=>{
+    console.log("servertime:",servertime);
+  })
+},[socket])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +84,6 @@ export default function Home() {
     };
     let x = filterData(filtervalue, all);
     setShowdata(x);
-    console.log(minvalCoreCount, maxvalCoreCount, x.length);
   }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
 
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
