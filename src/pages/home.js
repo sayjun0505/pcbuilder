@@ -52,6 +52,13 @@ export default function Home() {
       }
     };
     fetchData();
+    const interval = setInterval(() => {
+      fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
+    }, 60000);
+
+    return () => {
+      clearInterval(interval); // Clear the interval on component unmount
+    };
   }, []);
   useEffect(() => {
     setShowdata(all);
