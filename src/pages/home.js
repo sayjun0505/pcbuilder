@@ -1,10 +1,8 @@
 import Infotable from "../components/infotable";
 import Filters from "../components/filters";
 import axios from "axios";
-import React, { useContext,useEffect, useState } from "react";
-import { SocketContext } from '../context/socket';
-
-
+import React, { useContext, useEffect, useState } from "react";
+import { SocketContext } from "../context/socket";
 
 export default function Home() {
   const [filtervalue, setFiltervalue] = useState("");
@@ -13,11 +11,11 @@ export default function Home() {
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const socket = useContext(SocketContext);
-useEffect(()=>{
-  socket.on("pcbuilder",servertime=>{
-    console.log("servertime:",servertime);
-  })
-},[socket])
+  useEffect(() => {
+    socket.on("pcbuilder_bpm", (servertime) => {
+      console.log("servertime:", servertime);
+    });
+  }, [socket]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -130,7 +128,10 @@ useEffect(()=>{
               ></path>
             </svg>
           </div>
-          <div className="text-3xl text-blue-600 font-bold"><span className="text-red-500">Total:</span>{showdata.length}</div>
+          <div className="text-3xl text-blue-600 font-bold">
+            <span className="text-red-500">Total:</span>
+            {showdata.length}
+          </div>
         </div>
 
         {showdata && <Infotable datas={showdata} />}
