@@ -13,7 +13,8 @@ export default function Info() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:5000/api/spec?id=${seletected}`;
+        // const url = `http://localhost:5000/api/spec?id=${seletected}`;
+        const url = `http://103.35.189.49:5000/api/spec?id=${seletected}`;
         // const response = await axios.get('http://103.35.189.49:5000/api/alldata');
         const response = await axios.get(url);
         const view = response.data;
