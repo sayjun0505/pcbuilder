@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MultiRangeSlider from "./multirangeslider";
 export default function RangeAccordion({ title, onValuesChange }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [minval, setMinval] = useState(1);
   const [maxval, setMaxval] = useState(100);
   const toggleAccordion = () => {
