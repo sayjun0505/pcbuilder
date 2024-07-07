@@ -69,7 +69,7 @@ export default function Record(propss) {
           {/* {propss.datainfo.vendor} */}
           {propss.datainfo.vendor.length===1?propss.datainfo.vendor[0].price:Math.min(...propss.datainfo.vendor.map(vendor => vendor.price))}
         </div>
-        <div className="flex flex-row w-full items-center justify-end gap-4 ">
+        {/* <div className="flex flex-row w-full items-center justify-end gap-4 ">
           {propss.datainfo.vendor.map((item, key) => {
             return item.vendorname === "bpm" ? (
                 <div key={key} className="bg-gray-500 p-2 rounded-xl">
@@ -106,7 +106,7 @@ export default function Record(propss) {
                 </div>)
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
