@@ -1,7 +1,8 @@
 import Infotable from "../components/infotable";
 import Filters from "../components/filters";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { SocketContext } from "../context/socket";
 
 export default function Home() {
   const [filtervalue, setFiltervalue] = useState("");
@@ -9,22 +10,35 @@ export default function Home() {
   const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
+  const socket = useContext(SocketContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get('http://103.35.189.49:5000/api/alldata');
-        const response = await axios.get("http://localhost:5000/api/alldata");
+        const response = await axios.get('http://103.35.189.49:5000/api/alldata');
+        // const response = await axios.get("http://localhost:5000/api/alldata");
         const tmp = response.data.data.map((item, index) => {
           const cpuid = item._id;
-          // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
+          let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
             id: item._id,
             img: item.imgurl,
+            review: "4.9",
             title: item.name.replace("Cpu ", "").replace(" Processor", ""),
-            detail: item.detail,
-            link: item.link,
+            Manufacturer: item.Manufacturer,
+            ManufacturerURL: item.ManufacturerURL,
+            MPN: item.MPN,
+            cores: item?.CoreCount || 0,
+            bclock: "5GHZ",
+            Socket: item?.Socket || "None",
+            cclock: item?.CoreClock || 0,
+            CoreFamily: item?.CoreFamily,
+            IncludesCooler:
+              item?.IncludesCooler === "Nee" ? "No" : "Yes" || "None",
             price: "384.00",
+            shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
+            shopicon: "https://pc-builder.io/img/amazon-icon.svg",
+            vendor: ar
           };
           return t;
         });
@@ -35,6 +49,7 @@ export default function Home() {
     };
     fetchData();
     const interval = setInterval(() => {
+      console.log("call fetch")
       fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
     }, 60000);
 
@@ -48,8 +63,13 @@ export default function Home() {
 
   useEffect(() => {
     const filterData = (value, list) => {
-      if (value === "") {        
-        return list;
+      if (value === "") {
+        const x = list.filter(
+          (item) =>
+            parseInt(item.cores) > parseInt(minvalCoreCount) &&
+            parseInt(item.cores) < parseInt(maxvalCoreCount)
+        );
+        return x;
       } else {
         const filtered = list.filter((item) =>
           item.title.toLowerCase().includes(filtervalue.toLowerCase())
@@ -115,7 +135,8 @@ export default function Home() {
             {showdata.length}
           </div>
         </div>
-        {showdata&&<Infotable datas={showdata} />}
+
+        {showdata && <Infotable datas={showdata} />}
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const MainLayout = ({ children }) => {
                 <Topbar />
                 {/* <Header /> */}
                 
-                {location.pathname === '/' ?<div className='w-full'> <Face /></div> :<div className='px-2 md:px-12 py-12 bg-[#dae2e5]'> <Outlet /></div>}
+                {location.pathname === '/' ?<div className='w-full'> <Face /></div> :<div className='px-2 md:px-12 py-12  bg-[#26293b]'> <Outlet /></div>}
                 
                 <Footer />
                 <Bottom />
