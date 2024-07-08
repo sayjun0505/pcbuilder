@@ -23,22 +23,10 @@ export default function Home() {
           let t = {
             id: item._id,
             img: item.imgurl,
-            review: "4.9",
-            title: item.name.replace("Cpu ", "").replace(" Processor", ""),
-            Manufacturer: item.Manufacturer,
-            ManufacturerURL: item.ManufacturerURL,
-            MPN: item.MPN,
-            cores: item?.CoreCount || 0,
-            bclock: "5GHZ",
-            Socket: item?.Socket || "None",
-            cclock: item?.CoreClock || 0,
-            CoreFamily: item?.CoreFamily,
-            IncludesCooler:
-              item?.IncludesCooler === "Nee" ? "No" : "Yes" || "None",
-            price: "384.00",
-            shop: "https://www.amazon.com/dp/B0BTZB7F88?tag=pc-builder-us-20",
-            shopicon: "https://pc-builder.io/img/amazon-icon.svg",
-            vendor: ar
+            name: item.name.replace("Cpu ", "").replace(" Processor", ""),
+            detail:item.detail,
+            price:item.price,
+            link:item.link
           };
           return t;
         });
