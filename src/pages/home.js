@@ -55,12 +55,12 @@ export default function Home() {
         const filtered = list.filter((item) =>
           item.title.toLowerCase().includes(filtervalue.toLowerCase())
         );
-        const x = filtered.filter(
-          (item) =>
-            parseInt(item.cores) > parseInt(minvalCoreCount) &&
-            parseInt(item.cores) < parseInt(maxvalCoreCount)
-        );
-        return x;
+        // const x = filtered.filter(
+        //   (item) =>
+        //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
+        //     parseInt(item.cores) < parseInt(maxvalCoreCount)
+        // );
+        return filtered;
       }
     };
     let x = filterData(filtervalue, all);
