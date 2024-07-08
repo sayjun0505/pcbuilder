@@ -13,7 +13,9 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://103.35.189.49:5000/api/alldata');
+        const response = await axios.get(
+          "http://103.35.189.49:5000/api/alldata"
+        );
         // const response = await axios.get("http://localhost:5000/api/alldata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
@@ -25,7 +27,7 @@ export default function Home() {
             title: item.name.replace("Cpu ", "").replace(" Processor", ""),
             detail: item.detail,
             link: item.link,
-            price: item.price,
+            price: item.price
           };
           return t;
         });
@@ -49,7 +51,7 @@ export default function Home() {
 
   useEffect(() => {
     const filterData = (value, list) => {
-      if (value === "") {        
+      if (value === "") {
         return list;
       } else {
         const filtered = list.filter((item) =>
@@ -81,6 +83,13 @@ export default function Home() {
         />
       </div>
       <div className="p-2 sm:p-0 w-full md:w-[73%] rounded-xl flex flex-col gap-4 ">
+        <div className="flex justify-end">
+          <div className="-mt-12 text-3xl text-blue-600 font-bold">
+            <span className="text-gray-200">Total:</span>
+            <span className="text-white">{showdata.length}</span>
+          </div>
+        </div>
+
         <div className="flex flex-row justify-between items-center w-full">
           <div className="bg-white border-2 border-gray-200 w-full sm:w-1/2 h-12 rounded-xl px-4 flex justify-center items-center">
             <input
@@ -111,12 +120,75 @@ export default function Home() {
               ></path>
             </svg>
           </div>
-          <div className="mt-8 text-3xl text-blue-600 font-bold">
-            <span className="text-gray-200">Total:</span>
-            <span className="text-white">{showdata.length}</span>
+          <div className="text-white flex flex-row gap-4 mr-12">
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center">
+              <svg
+                viewBox="0 0 1024 1024"
+                className="w-4 h-4"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                stroke="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+                    fill="#ffffff"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              1
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              2
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              3
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              4
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              5
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+              6
+            </div>
+            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center">
+              <svg
+                viewBox="0 0 1024 1024"
+                className="w-4 h-4"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                stroke="#ffffff"
+                transform="matrix(-1, 0, 0, 1, 0, 0)"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+                    fill="#ffffff"
+                  ></path>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
-        {showdata&&<Infotable datas={showdata} />}
+        {showdata && <Infotable datas={showdata} />}
       </div>
     </div>
   );
