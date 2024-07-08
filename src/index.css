@@ -31,7 +31,7 @@ code {
   appearance: none;
   width: 34px;
   height: 34px;
-  background: red;
+  background: #4e4d4d;
   /* accent-color: coral; */
   border: 8px solid white;
   cursor: pointer;
@@ -43,7 +43,7 @@ code {
   appearance: none;
   width: 34px;
   height: 34px;
-  background: blue;
+  background: #4e4d4d;
   border: 8px solid white;
   cursor: pointer;
 }
@@ -52,7 +52,7 @@ code {
 .container .slider .left input[type="range"]::-moz-range-thumb {
   width: 34px;
   height: 34px;
-  background: red;
+  background:#4e4d4d;
   border: 8px solid white;
   cursor: pointer;
 }
@@ -62,7 +62,7 @@ code {
 .container .slider .right input[type="range"]::-moz-range-thumb {
   width: 34px;
   height: 34px;
-  background: blue;
+  background: #4e4d4d;
   border: 8px solid white;
   cursor: pointer;
 }
@@ -127,12 +127,12 @@ code {
   z-index: 2;
   border-radius: 40px;
   background: var(--Gradient,
-      linear-gradient(90deg, #e91e24 4.86%, #1e32e9 99.91%));
+      linear-gradient(90deg, #4e4d4d 4.86%, #343435 99.91%));
 }
 
 .slider__left-value,
 .slider__right-value {
-  color: #060ef6;
+  color: #4e4d4d;
   font-size: 12px;
   translate: calc(-50%);
 }
@@ -206,13 +206,13 @@ code {
 }
 
 .slider__range {
-  background-color: rgb(25, 118, 210);
+  background-color: #4e4d4d;
   z-index: 2;
 }
 
 .slider__left-value,
 .slider__right-value {
-  color: rgb(25, 118, 210);
+  color:#4e4d4d;
   background-color: white;
   font-size: 16px;
   margin-top: -46px;
@@ -252,7 +252,7 @@ code {
 
 /* For Chrome browsers */
 .thumbmulti::-webkit-slider-thumb {
-  background-color: rgb(25, 118, 210);
+  background-color: #4e4d4d;
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;
@@ -291,20 +291,6 @@ label {
   margin-bottom: .5rem;
 }
 
-header .mode {
-  /* -ms-flex-preferred-size: 10%;
-  flex-basis: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 0px; */
-}
 header .mode .switch input {
   opacity: 0;
   width: 0;

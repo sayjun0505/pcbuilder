@@ -34,7 +34,7 @@ export default function RangeAccordion({ title, onValuesChange }) {
       </div>
       <div
         className={` px-4 bg-gray-100 transition-height duration-3000 ${
-          isOpen ? "h-36 " : "h-0 overflow-hidden"
+          isOpen ? "h-36 rounded-b-lg" : "h-0 overflow-hidden"
         }`}
       >
         <MultiRangeSlider

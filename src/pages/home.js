@@ -9,6 +9,7 @@ export default function Home() {
   const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,6 +74,23 @@ export default function Home() {
     setMinvalCoreCount(newMinval);
     setMaxvalCoreCount(newMaxval);
   };
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const goToPrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+  const itemsPerPage = 36;
+  const totalPages = Math.ceil(showdata.length / itemsPerPage);
+  const paginatedData = showdata.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="md:mt-60 w-full flex flex-row justify-between">
@@ -121,7 +139,10 @@ export default function Home() {
             </svg>
           </div>
           <div className="text-white flex flex-row gap-4 mr-12">
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center">
+            <div
+              onClick={goToPrevPage}
+              className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
               <svg
                 viewBox="0 0 1024 1024"
                 className="w-4 h-4"
@@ -144,25 +165,28 @@ export default function Home() {
                 </g>
               </svg>
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(1)} className={`hover:cursor-pointer ${currentPage==1?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               1
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(2)} className={`hover:cursor-pointer ${currentPage==2?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               2
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(3)} className={`hover:cursor-pointer ${currentPage==3?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               3
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(4)} className={`hover:cursor-pointer ${currentPage==4?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               4
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(5)} className={`hover:cursor-pointer ${currentPage==5?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               5
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500">
+            <div onClick={()=>goToPage(6)} className={`hover:cursor-pointer ${currentPage==6?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
               6
             </div>
-            <div className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center">
+            <div
+              onClick={goToNextPage}
+              className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
               <svg
                 viewBox="0 0 1024 1024"
                 className="w-4 h-4"
