@@ -18,7 +18,7 @@ export default function RangeAccordion({ title, onValuesChange }) {
         className="flex justify-between items-center border-b-2 border-gray-200 p-4 cursor-pointer"
         onClick={toggleAccordion}
       >
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg text-white font-semibold">{title}</h3>
 
         <img
           width="50"

@@ -112,8 +112,8 @@ export default function Home() {
             </svg>
           </div>
           <div className="mt-8 text-3xl text-blue-600 font-bold">
-            <span className="text-red-500">Total:</span>
-            {showdata.length}
+            <span className="text-gray-200">Total:</span>
+            <span className="text-white">{showdata.length}</span>
           </div>
         </div>
         {showdata&&<Infotable datas={showdata} />}
