@@ -2,6 +2,7 @@ import Record from "./record"
 import React, { useEffect, useState } from 'react';
 export default function Infotable(props) {
     const [dataState, setDataState] = useState(props.datas);
+    // console.log(props.datas)
     useEffect(() => {
         setDataState(props.datas);
     }, [props]);

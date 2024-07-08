@@ -15,6 +15,7 @@ export default function Home() {
       try {
         const response = await axios.get('http://103.35.189.49:5000/api/alldata');
         // const response = await axios.get("http://localhost:5000/api/alldata");
+        // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const cpuid = item._id;
           // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
@@ -24,7 +25,7 @@ export default function Home() {
             title: item.name.replace("Cpu ", "").replace(" Processor", ""),
             detail: item.detail,
             link: item.link,
-            price: "384.00",
+            price: item.price,
           };
           return t;
         });
