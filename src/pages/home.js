@@ -110,7 +110,7 @@ export default function Home() {
               ></path>
             </svg>
           </div>
-          <div className="text-3xl text-blue-600 font-bold">
+          <div className="mt-8 text-3xl text-blue-600 font-bold">
             <span className="text-red-500">Total:</span>
             {showdata.length}
           </div>
