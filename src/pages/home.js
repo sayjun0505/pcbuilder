@@ -138,7 +138,7 @@ export default function Home() {
               ></path>
             </svg>
           </div>
-          <div className="text-white flex flex-row gap-4 mr-12">
+          {/* <div className="text-white flex flex-row gap-4 mr-12">
             <div
               onClick={goToPrevPage}
               className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
@@ -210,7 +210,7 @@ export default function Home() {
                 </g>
               </svg>
             </div>
-          </div>
+          </div> */}
         </div>
         {showdata && <Infotable datas={showdata} />}
       </div>
