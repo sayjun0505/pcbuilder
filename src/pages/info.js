@@ -49,7 +49,9 @@ export default function Info() {
         )}
 
         <div className="flex flex-row justify-between w-full">
-          <div className="w-2/12 h-128 rounded-t-lg bg-white"></div>
+          <div className="w-2/12 h-128 rounded-t-lg bg-white"  dangerouslySetInnerHTML={{ __html: fromdb?.nat?.html }}>
+
+          </div>
           <div className="w-9/12 rounded-md ">
             <div className="flex px-2 rounded-t-lg flex-row w-full bg-gray-300 h-12 items-center">
               <div className="w-2/5 font-bold text-2xl">Offer name</div>
