@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className=""></div>
                 <div className="border-2 border-gray-700 px-8 py-4 w-fit">Explore Pre-Built PCs</div>
             </div>
-            <div className="flex flex-row flex-wrap items-center rounded-xl p-12 text-white justify-between w-full bg-[#001119]">
+            <div className="flex flex-row flex-wrap items-center rounded-xl p-12 text-white justify-between bg-[#001119]">
                 <div className=""></div>
                 <div className="flex flex-col gap-4">
                     <div className="text-left font-bold text-2xl">Have A Query?</div>

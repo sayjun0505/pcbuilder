@@ -388,10 +388,10 @@ header .mode .slider:before {
 .flags-round {
   padding-left: 26px;
   position: relative;
-}
+}/* 
 *, :after, :before {
   box-sizing: inherit;
-}
+}*/
 .flags-round--de:before {
   background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-de-40d8a70243a35e41a14da47687c3dcbb.svg") no-repeat;
 }
@@ -410,11 +410,6 @@ header .mode .slider:before {
 .flags-round--at:before {
   background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-at-3e84646e8da7282ebadf3c4f0e0aa564.svg") no-repeat;
 }
-
-
-
-
-
 .flags-round:before {
   content: "";
   display: block;
@@ -424,4 +419,4 @@ header .mode .slider:before {
   top: 50%;
   transform: translateY(-50%);
   width: 16px;
-}
+} 

@@ -55,7 +55,7 @@ export default function Bottom() {
           <span>Twitter</span>
         </div>
       </div>
-      <div className="w-full px-8 py-4 text-left bg-[#001119] flex flex-row  justify-between">
+      <div className="px-8 py-4 text-left bg-[#001119] flex flex-row  justify-between">
         <div className="">
           Copyright © 2020-24 PC Builder™ | All Rights Reserved.
         </div>

@@ -49,10 +49,10 @@ export default function Info() {
         )}
 
         <div className="flex flex-row justify-between w-full">
-          <div className="w-2/12 h-fit flex p-4 rounded-t-lg bg-white flex-col">
-            <div className="text-2xl font-bold">International Prices</div>
+          <div className="w-2/12 h-fit flex rounded-t-lg bg-white flex-col">
+            <div className="text-2xl font-bold p-4">International Prices</div>
             <div
-              className="mt-4 ml-4"
+              className="my-4 ml-6"
               dangerouslySetInnerHTML={{
                 __html: fromdb?.nat?.html ? fromdb.nat.html : null
               }}
