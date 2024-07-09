@@ -17,6 +17,7 @@ export default function Info() {
         const url = `http://103.35.189.49:5000/api/spec?id=${seletected}`;
         const response = await axios.get(url);
         const view = response.data;
+        console.log(view)
         setFromdb(view);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,22 +49,24 @@ export default function Info() {
         )}
 
         <div className="flex flex-row justify-between w-full">
-          <div className="w-3/12 h-128 rounded-t-lg bg-white"></div>
-          <div className="w-8/12 rounded-md ">
+          <div className="w-2/12 h-128 rounded-t-lg bg-white"></div>
+          <div className="w-9/12 rounded-md ">
             <div className="flex px-2 rounded-t-lg flex-row w-full bg-gray-300 h-12 items-center">
-              <div className="w-3/5 font-bold text-2xl">Offer name</div>
+              <div className="w-2/5 font-bold text-2xl">Offer name</div>
+              <div className="w-1/5 text-center  font-bold text-2xl ">Payment methods</div>
               <div className="w-1/5 text-center  font-bold text-2xl ">Price and shipping</div>
               <div className="w-1/5 text-center  font-bold text-2xl">Shop</div>
             </div>
             {fromdb.vendor &&
               fromdb.vendor.map((item, index) => (
                 <div
-                  className="flex px-2 flex-row w-full py-2 border-2 bg-white items-center hover:border-gray-400 hover:cursor-pointer"
+                  className="flex px-2 flex-row payment-column w-full py-2 border-2 bg-white items-center hover:border-gray-400 hover:cursor-pointer"
                   key={item.cpuid}
                 >
-                  <a href={item.directlink} className="w-3/5 px-4  line-clamp-2 text-2xl">
-                    {item.displayname}
+                  <a href={item.directlink} className="w-2/5 px-4  line-clamp-2 text-xl">
+                    {item.displayname.replace("Cpu ","").replace("cpu ","")}
                   </a>
+                  <div className="w-[160px] text-sm word-break text-blue-600 font-bold text-right flex flex-row " dangerouslySetInnerHTML={{ __html: item.payment }}></div>
                   <div className="w-1/5 text-2xl text-blue-600 font-bold text-right">€ {item.price}</div>
                   <div className="w-1/5 flex justify-end">
                     <img className="h-12" src={item.vendorimgurl} />

@@ -339,3 +339,48 @@ header .mode .slider:before {
   -webkit-transition: .4s;
   transition: .4s;
 }
+
+.productOffers-listItemOfferShippingDetailsRightItem {
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: .5625rem;
+  height: 17px;
+  line-height: 13px;
+  margin: 0 -1px -1px 0;
+  min-width: 52px;
+  padding: 1px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 52px;
+}
+.productOffers-listItemOfferShippingDetailsRightItem a {
+  color: inherit;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+.productOffers-listItemOffer .payment-column .productOffers-listItemOfferShippingDetailsRight {
+  margin-left: 20px;
+  max-width: 104px;
+}
+.productOffers-listItemOffer .payment-column .productOffers-listItemOfferShippingDetailsRight {
+  margin-left: 20px;
+  max-width: 104px;
+}
+.offerImage{
+  width: 20px;
+}
+.productOffers-listItemOfferShippingDetailsRightItem a{
+  width: 60px;
+}
+.productOffers-listItemOfferShippingDetailsRightItem a > span {
+  display: inline-block;
+  width: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* This will show an ellipsis (...) when content overflows */
+}
