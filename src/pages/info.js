@@ -49,7 +49,7 @@ export default function Info() {
         )}
 
         <div className="flex flex-row justify-between w-full">
-          <div className="w-2/12 h-128 rounded-t-lg bg-white"  dangerouslySetInnerHTML={{ __html: fromdb?.nat?.html }}>
+          <div className="w-2/12 h-128 rounded-t-lg bg-white"  dangerouslySetInnerHTML={{ __html:  fromdb?.nat?.html ? fromdb.nat.html : null }}>
 
           </div>
           <div className="w-9/12 rounded-md ">
