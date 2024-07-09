@@ -384,3 +384,44 @@ header .mode .slider:before {
   overflow: hidden;
   text-overflow: ellipsis; /* This will show an ellipsis (...) when content overflows */
 }
+
+.flags-round {
+  padding-left: 26px;
+  position: relative;
+}
+*, :after, :before {
+  box-sizing: inherit;
+}
+.flags-round--de:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-de-40d8a70243a35e41a14da47687c3dcbb.svg") no-repeat;
+}
+.flags-round--it:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-it-2524f69ae24dd6e37fb9766cd61b5846.svg") no-repeat;
+}
+.flags-round--gb:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-gb-3b81948a5b39ae2f22dbfc8f4f3bf2c6.svg") no-repeat;
+}
+.flags-round--es:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-es-33d51353eed45ad36b66167fcaf4e7dd.svg") no-repeat;
+}
+.flags-round--fr:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-fr-68f664cbedf9d94caa6067493dbb885b.svg") no-repeat;
+}
+.flags-round--at:before {
+  background: url("https://cdn.idealo.com/storage/offerpage/assets/offerpage/images/flag-round-at-3e84646e8da7282ebadf3c4f0e0aa564.svg") no-repeat;
+}
+
+
+
+
+
+.flags-round:before {
+  content: "";
+  display: block;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+}
