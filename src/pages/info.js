@@ -107,7 +107,7 @@ export default function Info() {
                             .replace("Processore ", "")}
                         </a>
                         <div
-                          className="w-[160px] text-sm word-break text-blue-600 font-bold text-right flex flex-row "
+                          className="w-[108px] ml-16 text-sm word-break text-blue-600 font-bold text-right flex flex-row justify-start"
                           dangerouslySetInnerHTML={{ __html: item.payment }}
                         ></div>
                         <div className="w-1/5 text-2xl text-blue-600 font-bold text-right">
