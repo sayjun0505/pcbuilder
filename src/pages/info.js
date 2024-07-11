@@ -111,7 +111,7 @@ export default function Info() {
                           dangerouslySetInnerHTML={{ __html: item.payment }}
                         ></div>
                         <div className="w-1/5 text-2xl text-blue-600 font-bold text-right">
-                          € {item.price}
+                          {item.price}
                         </div>
                         <div className="w-1/5 flex justify-end">
                           <img className="h-12" src={item.vendorimgurl} />
