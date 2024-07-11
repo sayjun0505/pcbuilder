@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 export default function Record(propss) {
   const navigate = useNavigate();
-  const detail = (data) => {
-    navigate("/info", { state: data });
+  const detail = (data,loc) => {
+    if(loc=="cpu")navigate("/info", { state: data });
+    if(loc=="mboard")navigate("/mdetail", { state: data });
   };
   return (
     <div
       className="w-64 bg-white shadow-xl rounded-md hover:cursor-pointer border-2 border-white hover:border-gray-300 border-white-500 p-2  flex flex-row justify-between"
-      onClick={() => detail(propss.datainfo.id)}
+      onClick={() => detail(propss.datainfo.id,propss.loc)}
     >
       <div className="broder-2 border-blue-500 w-full flex flex-col items-center justify-center gap-4 ">
         <div className="flex flex-col justify-center">

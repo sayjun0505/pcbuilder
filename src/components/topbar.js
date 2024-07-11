@@ -248,51 +248,54 @@ export default function Topbar() {
                     {({ focus }) => (
                       <div
                         className={classNames(
-                          focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
+                          focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                          " flex flex-row  items-center block px-4 py-2 text-sm"
                         )}
                       >
                         {/* <div className="flex flex-row items-center"> */}
-                          <img
-                            className="w-8 h-6"
-                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
-                            alt="pc builder, pc part picker, build my pc"
-                          ></img>
-                          <span>Canada</span>
-                        </div>
+                        <img
+                          className="w-8 h-6"
+                          src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                          alt="pc builder, pc part picker, build my pc"
+                        ></img>
+                        <span>Canada</span>
+                      </div>
                       // </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ focus }) => (
-                     <div
-                     className={classNames(
-                       focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
-                     )}
-                   >
-                          <img
-                            className="w-8 h-6"
-                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
-                            alt="pc builder, pc part picker, build my pc"
-                          ></img>
-                          <span>Canada</span>
-                        </div>
+                      <div
+                        className={classNames(
+                          focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                          " flex flex-row  items-center block px-4 py-2 text-sm"
+                        )}
+                      >
+                        <img
+                          className="w-8 h-6"
+                          src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                          alt="pc builder, pc part picker, build my pc"
+                        ></img>
+                        <span>Canada</span>
+                      </div>
                       // </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ focus }) => (
-                     <div
-                     className={classNames(
-                       focus ? "bg-gray-100 text-gray-900" : "text-gray-700"," flex flex-row  items-center block px-4 py-2 text-sm"
-                     )}
-                   >
-                          <img
-                            className="w-8 h-6"
-                            src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
-                            alt="pc builder, pc part picker, build my pc"
-                          ></img>
-                          <span>Canada</span>
-                        </div>
+                      <div
+                        className={classNames(
+                          focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                          " flex flex-row  items-center block px-4 py-2 text-sm"
+                        )}
+                      >
+                        <img
+                          className="w-8 h-6"
+                          src="https://static.pcbuilder.net/assets/images/flags/ca.svg"
+                          alt="pc builder, pc part picker, build my pc"
+                        ></img>
+                        <span>Canada</span>
+                      </div>
                       // </a>
                     )}
                   </MenuItem>
@@ -331,15 +334,6 @@ export default function Topbar() {
           }  flex-row bg-[#001119] py-4 px-8 justify-between`}
         >
           <div className="flex flex-col gap-4">
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
-              <span>Storage</span>
-              <img
-                className="w-20 h-20"
-                alt="cpu, processor, pc builder, pc part picker, build my pc"
-                data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/storage.png"
-              />
-            </div>
             <Link
               to="/cpu"
               onClick={() => setShowproducts(false)}
@@ -351,6 +345,19 @@ export default function Topbar() {
                 alt="cpu, processor, pc builder, pc part picker, build my pc"
                 data-ll-status="loaded"
                 src="https://static.pcbuilder.net/assets/images/mega-menu/nav-processor.png"
+              />
+            </Link>
+            <Link
+              to="/mboard"
+              onClick={() => setShowproducts(false)}
+              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
+            >
+              <span>Motherboard</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/motherboard.png"
               />
             </Link>
           </div>
@@ -384,20 +391,15 @@ export default function Topbar() {
                 src="https://static.pcbuilder.net/assets/images/megamenu/power-supply.png"
               />
             </div>
-            <Link
-              to="/mboard"
-              onClick={() => setShowproducts(false)}
-              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
-            >
-              <span>Motherboard</span>
+            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+              <span>Storage</span>
               <img
                 className="w-20 h-20"
                 alt="cpu, processor, pc builder, pc part picker, build my pc"
                 data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/motherboard.png"
+                src="https://static.pcbuilder.net/assets/images/megamenu/storage.png"
               />
-            </Link>
-
+            </div>
 
             {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Motherboard</span>

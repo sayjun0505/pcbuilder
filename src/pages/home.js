@@ -212,7 +212,7 @@ export default function Home() {
             </div>
           </div> */}
         </div>
-        {showdata && <Infotable datas={showdata} />}
+        {showdata && <Infotable datas={showdata} loc="cpu"/>}
       </div>
     </div>
   );

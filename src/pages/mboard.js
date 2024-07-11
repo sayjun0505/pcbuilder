@@ -20,7 +20,7 @@ export default function Mboard() {
         // const response = await axios.get("http://localhost:5000/api/allmdata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
-          const cpuid = item._id;
+          const mboardid = item._id;
           // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
             id: item._id,
@@ -212,7 +212,7 @@ export default function Mboard() {
             </div>
           </div> */}
         </div>
-        {showdata && <Infotable datas={showdata} />}
+        {showdata && <Infotable datas={showdata} loc="mboard"/>}
       </div>
     </div>
   );
