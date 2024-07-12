@@ -79,10 +79,10 @@ export default function Info() {
             <div className="flex px-2 rounded-t-lg flex-row w-full bg-gray-300 h-12 items-center">
               <div className="w-2/5 font-bold text-2xl">Offer name</div>
               <div className="w-1/5 text-center  font-bold text-2xl ">
-                Payment methods
+                Payment
               </div>
               <div className="w-1/5 text-center  font-bold text-2xl ">
-                Price and shipping
+                Price
               </div>
               <div className="w-1/5 text-center  font-bold text-2xl">Shop</div>
             </div>
