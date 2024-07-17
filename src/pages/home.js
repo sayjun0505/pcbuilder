@@ -19,7 +19,7 @@ export default function Home() {
           `http://103.35.189.49:5000/api/alldata?filter=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
-        // console.log(response.data.data)
+        console.log(response.data.data)
         seCount(response.data.data.count);
 
         const tmp = response.data.data.data.map((item, index) => {
