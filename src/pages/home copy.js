@@ -10,6 +10,7 @@ export default function Home() {
   const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
+  const [count, seCount] = useState(0);
   const socket = useContext(SocketContext);
 
   useEffect(() => {
@@ -17,7 +18,8 @@ export default function Home() {
       try {
         const response = await axios.get('http://103.35.189.49:5000/api/alldata');
         // const response = await axios.get("http://localhost:5000/api/alldata");
-        const tmp = response.data.data.map((item, index) => {
+        seCount(response.data.data.count);
+        const tmp = response.data.data.data.map((item, index) => {
           const cpuid = item._id;
           let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
@@ -132,7 +134,7 @@ export default function Home() {
           </div>
           <div className="text-3xl text-blue-600 font-bold">
             <span className="text-red-500">Total:</span>
-            {showdata.length}
+            {count}
           </div>
         </div>
 
