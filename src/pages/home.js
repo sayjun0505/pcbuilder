@@ -15,7 +15,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://103.35.189.49:5000/api/alldata"
+          `http://103.35.189.49:5000/api/alldata?id=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
         // console.log(response.data.data)
@@ -104,7 +104,8 @@ export default function Home() {
         <div className="flex justify-end">
           <div className="-mt-12 text-3xl text-blue-600 font-bold">
             <span className="text-gray-200">Total:</span>
-            <span className="text-white">{showdata.length}</span>
+            {/* <span className="text-white">{showdata.length}</span> */}
+            <span className="text-white">{count}</span>
           </div>
         </div>
 
