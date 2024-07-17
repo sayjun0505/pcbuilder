@@ -15,7 +15,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://103.35.189.49:5000/api/alldata?id=`
+          `http://103.35.189.49:5000/api/alldata?filter=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
         // console.log(response.data.data)
