@@ -20,9 +20,9 @@ export default function Home() {
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
         console.log(response.data.data)
-        seCount(response.data.data.count);
+        seCount(response.data.count);
 
-        const tmp = response.data.data.data.map((item, index) => {
+        const tmp = response.data.data.map((item, index) => {
           const cpuid = item._id;
           // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
