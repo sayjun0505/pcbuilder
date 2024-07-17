@@ -19,7 +19,7 @@ export default function Home() {
           `http://103.35.189.49:5000/api/alldata?filter=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
-        console.log(response.data.data)
+        console.log(response.data.data);
         seCount(response.data.count);
 
         const tmp = response.data.data.map((item, index) => {
@@ -41,37 +41,37 @@ export default function Home() {
       }
     };
     fetchData();
-    const interval = setInterval(() => {
-      fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
-    }, 60000);
+    // const interval = setInterval(() => {
+    //   fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
+    // }, 60000);
 
-    return () => {
-      clearInterval(interval); // Clear the interval on component unmount
-    };
+    // return () => {
+    //   clearInterval(interval); // Clear the interval on component unmount
+    // };
   }, []);
   useEffect(() => {
     setShowdata(all);
   }, [all]);
 
-  useEffect(() => {
-    const filterData = (value, list) => {
-      if (value === "") {
-        return list;
-      } else {
-        const filtered = list.filter((item) =>
-          item.title.toLowerCase().includes(filtervalue.toLowerCase())
-        );
-        // const x = filtered.filter(
-        //   (item) =>
-        //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
-        //     parseInt(item.cores) < parseInt(maxvalCoreCount)
-        // );
-        return filtered;
-      }
-    };
-    let x = filterData(filtervalue, all);
-    setShowdata(x);
-  }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
+  // useEffect(() => {
+  //   const filterData = (value, list) => {
+  //     if (value === "") {
+  //       return list;
+  //     } else {
+  //       // const filtered = list.filter((item) =>
+  //       //   item.title.toLowerCase().includes(filtervalue.toLowerCase())
+  //       // );
+  //       // const x = filtered.filter(
+  //       //   (item) =>
+  //       //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
+  //       //     parseInt(item.cores) < parseInt(maxvalCoreCount)
+  //       // );
+  //       return filtered;
+  //     }
+  //   };
+  //   let x = filterData(filtervalue, all);
+  //   setShowdata(x);
+  // }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
 
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
@@ -88,6 +88,29 @@ export default function Home() {
   const goToNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
+  const FilterProcess=async()=>{
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
+    );
+    // const response = await axios.get("http://localhost:5000/api/alldata");
+    console.log(response.data.data);
+    seCount(response.data.count);
+
+    const tmp = response.data.data.map((item, index) => {
+      const cpuid = item._id;
+      // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
+      let t = {
+        id: item._id,
+        img: item.imgurl,
+        title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+        detail: item.detail,
+        link: item.link,
+        price: item.price
+      };
+      return t;
+    });
+    setAll(tmp);
+  }
   const itemsPerPage = 36;
   const totalPages = Math.ceil(showdata.length / itemsPerPage);
   const paginatedData = showdata.slice(
@@ -113,35 +136,40 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row justify-between items-center w-full">
-          <div className="bg-white border-2 border-gray-200 w-full sm:w-1/2 h-12 rounded-xl px-4 flex justify-center items-center">
-            <input
-              type="text"
-              className="w-full outline-none bg-white"
-              onChange={(event) => setFiltervalue(event.target.value)}
-            />
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.5 15.5L19 19"
-                stroke="#818895"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-              <path
-                d="M5 11C5 14.3137 7.68629 17 11 17C12.6597 17 14.1621 16.3261 15.2483 15.237C16.3308 14.1517 17 12.654 17 11C17 7.68629 14.3137 5 11 5C7.68629 5 5 7.68629 5 11Z"
-                stroke="#818895"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-            </svg>
+          <div className="flex flex-row items-center gap-8 w-full">
+            <div className="bg-white border-2 border-gray-200 w-[320px] sm:w-1/2 h-12 rounded-xl px-4 flex justify-center items-center">
+              <input
+                type="text"
+                className="w-full outline-none bg-white"
+                onChange={(event) => setFiltervalue(event.target.value)}
+              />
+            </div>
+            <div className="flex justify-center w-20 border-2 rounded-lg h-12 border-gray-200 items-center hover:border-gray-500 hover:cursor-pointer" onClick={FilterProcess}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.5 15.5L19 19"
+                  stroke="#818895"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M5 11C5 14.3137 7.68629 17 11 17C12.6597 17 14.1621 16.3261 15.2483 15.237C16.3308 14.1517 17 12.654 17 11C17 7.68629 14.3137 5 11 5C7.68629 5 5 7.68629 5 11Z"
+                  stroke="#818895"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </svg>
+            </div>
           </div>
+
           {/* <div className="text-white flex flex-row gap-4 mr-12">
             <div
               onClick={goToPrevPage}
@@ -216,7 +244,7 @@ export default function Home() {
             </div>
           </div> */}
         </div>
-        {showdata && <Infotable datas={showdata} loc="cpu"/>}
+        {showdata && <Infotable datas={showdata} loc="cpu" />}
       </div>
     </div>
   );
