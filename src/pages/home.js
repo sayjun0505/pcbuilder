@@ -10,6 +10,7 @@ export default function Home() {
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const [currentPage, setCurrentPage] = useState(1);
+  const [count, seCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,9 @@ export default function Home() {
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
         // console.log(response.data.data)
-        const tmp = response.data.data.map((item, index) => {
+        seCount(response.data.data.count);
+
+        const tmp = response.data.data.data.map((item, index) => {
           const cpuid = item._id;
           // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
