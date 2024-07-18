@@ -41,9 +41,10 @@ export default function Home() {
         //   setShowdata(filtered);
         //   setCount(filtered.length);
         // }
-        setAll(tmp);
+        // setAll(tmp);
+        setShowdata(tmp);
         console.log(response.data.data);
-        setCount(tmp.length);
+        setCount(response.data.count);
         
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -62,26 +63,26 @@ export default function Home() {
   //   setShowdata(all);
   // }, [all]);
 
-  useEffect(() => {
-    const filterData = (value, list) => {
-      if (value === "") {
-        return list;
-      } else {
-        const filtered = list.filter((item) =>
-          item.title.toLowerCase().includes(filtervalue.toLowerCase())
-        );
-        const x = filtered.filter(
-          (item) =>
-            parseInt(item.cores) > parseInt(minvalCoreCount) &&
-            parseInt(item.cores) < parseInt(maxvalCoreCount)
-        );
-        return filtered;
-      }
-    };
-    let x = filterData(filtervalue, all);
-    setShowdata(x);
-    setCount(x.length)
-  }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
+  // useEffect(() => {
+  //   const filterData = (value, list) => {
+  //     if (value === "") {
+  //       return list;
+  //     } else {
+  //       const filtered = list.filter((item) =>
+  //         item.title.toLowerCase().includes(filtervalue.toLowerCase())
+  //       );
+  //       const x = filtered.filter(
+  //         (item) =>
+  //           parseInt(item.cores) > parseInt(minvalCoreCount) &&
+  //           parseInt(item.cores) < parseInt(maxvalCoreCount)
+  //       );
+  //       return filtered;
+  //     }
+  //   };
+  //   let x = filterData(filtervalue, all);
+  //   setShowdata(x);
+  //   setCount(x.length)
+  // }, [filtervalue, minvalCoreCount, maxvalCoreCount]);
 
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
@@ -110,7 +111,7 @@ export default function Home() {
       };
       return t;
     });
-    setAll(tmp);
+    setShowdata(tmp);
   }
   const FilterProcess=async()=>{
     const response = await axios.get(
@@ -133,7 +134,7 @@ export default function Home() {
       };
       return t;
     });
-    setAll(tmp);
+    setShowdata(tmp);
   }
   const itemsPerPage = 36;
   const totalPages = Math.ceil(showdata.length / itemsPerPage);
