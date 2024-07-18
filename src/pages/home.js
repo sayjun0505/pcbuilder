@@ -19,11 +19,7 @@ export default function Home() {
           `http://103.35.189.49:5000/api/alldata?filter=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
-       
-
         const tmp = response.data.data.map((item, index) => {
-          const cpuid = item._id;
-          // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
           let t = {
             id: item._id,
             img: item.imgurl,
@@ -35,18 +31,19 @@ export default function Home() {
           return t;
         });
 
-        if (filtervalue === "") {
-          setShowdata(tmp);
-          setCount(response.data.count);
-        } else {
-          const filtered = tmp.filter((item) =>
-            item.title.toLowerCase().includes(filtervalue.toLowerCase())
-          );
-          setShowdata(filtered);
-          setCount(filtered.length);
-        }
+        // if (filtervalue === "") {
+        //   setShowdata(tmp);
+        //   setCount(response.data.count);
+        // } else {
+        //   const filtered = tmp.filter((item) =>
+        //     item.title.toLowerCase().includes(filtervalue.toLowerCase())
+        //   );
+        //   setShowdata(filtered);
+        //   setCount(filtered.length);
+        // }
         setAll(tmp);
         console.log(response.data.data);
+        setCount(tmp.length);
         
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -61,9 +58,9 @@ export default function Home() {
       clearInterval(interval); // Clear the interval on component unmount
     };
   }, []);
-  useEffect(() => {
-    setShowdata(all);
-  }, [all]);
+  // useEffect(() => {
+  //   setShowdata(all);
+  // }, [all]);
 
   useEffect(() => {
     const filterData = (value, list) => {
@@ -90,17 +87,7 @@ export default function Home() {
     setMinvalCoreCount(newMinval);
     setMaxvalCoreCount(newMaxval);
   };
-  const goToPage = (page) => {
-    setCurrentPage(page);
-  };
-
-  const goToPrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
-
-  const goToNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
+  
   const init=async()=>{
     setFiltervalue("");
     const response = await axios.get(
@@ -124,7 +111,6 @@ export default function Home() {
       return t;
     });
     setAll(tmp);
-
   }
   const FilterProcess=async()=>{
     const response = await axios.get(
