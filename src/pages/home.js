@@ -58,14 +58,14 @@ export default function Home() {
       if (value === "") {
         return list;
       } else {
-        // const filtered = list.filter((item) =>
-        //   item.title.toLowerCase().includes(filtervalue.toLowerCase())
-        // );
-        // const x = filtered.filter(
-        //   (item) =>
-        //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
-        //     parseInt(item.cores) < parseInt(maxvalCoreCount)
-        // );
+        const filtered = list.filter((item) =>
+          item.title.toLowerCase().includes(filtervalue.toLowerCase())
+        );
+        const x = filtered.filter(
+          (item) =>
+            parseInt(item.cores) > parseInt(minvalCoreCount) &&
+            parseInt(item.cores) < parseInt(maxvalCoreCount)
+        );
         return filtered;
       }
     };
