@@ -40,14 +40,14 @@ export default function Home() {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
-    // const interval = setInterval(() => {
-    //   fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
-    // }, 60000);
+    // fetchData();
+    const interval = setInterval(() => {
+      fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
+    }, 60000);
 
-    // return () => {
-    //   clearInterval(interval); // Clear the interval on component unmount
-    // };
+    return () => {
+      clearInterval(interval); // Clear the interval on component unmount
+    };
   }, []);
   useEffect(() => {
     setShowdata(all);
