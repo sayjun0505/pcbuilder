@@ -38,9 +38,9 @@ export default function Home() {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData(); 
+    FilterProcess(); 
     const interval = setInterval(() => {
-      fetchData(); 
+      FilterProcess(); 
     }, 60000);
     return () => {
       clearInterval(interval); 
