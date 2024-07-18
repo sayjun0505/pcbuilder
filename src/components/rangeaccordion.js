@@ -21,7 +21,7 @@ export default function RangeAccordion({ title, onValuesChange }) {
         <h3 className="text-lg text-white font-semibold">{title}</h3>
         <svg viewBox="0 0 1024 1024" className={`transform ${
             isOpen ? "rotate-180" : "rotate-0"
-          } transition-transform duration-300 w-[14px] h-[14px]`} version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#ffffff"></path></g></svg>
+          } transition-transform duration-300 w-[14px] h-[14px]`} version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#ffffff"></path></g></svg>
         {/* <img
           width="50"
           className={`transform ${
