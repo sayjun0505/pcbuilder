@@ -19,8 +19,7 @@ export default function Home() {
           `http://103.35.189.49:5000/api/alldata?filter=`
         );
         // const response = await axios.get("http://localhost:5000/api/alldata");
-        console.log(response.data.data);
-        seCount(response.data.count);
+       
 
         const tmp = response.data.data.map((item, index) => {
           const cpuid = item._id;
@@ -35,7 +34,20 @@ export default function Home() {
           };
           return t;
         });
+
+        if (filtervalue === "") {
+          setShowdata(tmp);
+          seCount(response.data.count);
+        } else {
+          const filtered = tmp.filter((item) =>
+            item.title.toLowerCase().includes(filtervalue.toLowerCase())
+          );
+          setShowdata(filtered);
+          seCount(filtered.length);
+        }
         setAll(tmp);
+        console.log(response.data.data);
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
