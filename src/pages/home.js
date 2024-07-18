@@ -10,7 +10,7 @@ export default function Home() {
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const [currentPage, setCurrentPage] = useState(1);
-  const [count, seCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,13 +37,13 @@ export default function Home() {
 
         if (filtervalue === "") {
           setShowdata(tmp);
-          seCount(response.data.count);
+          setCount(response.data.count);
         } else {
           const filtered = tmp.filter((item) =>
             item.title.toLowerCase().includes(filtervalue.toLowerCase())
           );
           setShowdata(filtered);
-          seCount(filtered.length);
+          setCount(filtered.length);
         }
         setAll(tmp);
         console.log(response.data.data);
@@ -83,6 +83,7 @@ export default function Home() {
     };
     let x = filterData(filtervalue, all);
     setShowdata(x);
+    setCount(x.length)
   }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
 
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
