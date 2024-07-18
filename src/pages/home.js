@@ -53,25 +53,25 @@ export default function Home() {
     setShowdata(all);
   }, [all]);
 
-  // useEffect(() => {
-  //   const filterData = (value, list) => {
-  //     if (value === "") {
-  //       return list;
-  //     } else {
-  //       // const filtered = list.filter((item) =>
-  //       //   item.title.toLowerCase().includes(filtervalue.toLowerCase())
-  //       // );
-  //       // const x = filtered.filter(
-  //       //   (item) =>
-  //       //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
-  //       //     parseInt(item.cores) < parseInt(maxvalCoreCount)
-  //       // );
-  //       return filtered;
-  //     }
-  //   };
-  //   let x = filterData(filtervalue, all);
-  //   setShowdata(x);
-  // }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
+  useEffect(() => {
+    const filterData = (value, list) => {
+      if (value === "") {
+        return list;
+      } else {
+        // const filtered = list.filter((item) =>
+        //   item.title.toLowerCase().includes(filtervalue.toLowerCase())
+        // );
+        // const x = filtered.filter(
+        //   (item) =>
+        //     parseInt(item.cores) > parseInt(minvalCoreCount) &&
+        //     parseInt(item.cores) < parseInt(maxvalCoreCount)
+        // );
+        return filtered;
+      }
+    };
+    let x = filterData(filtervalue, all);
+    setShowdata(x);
+  }, [filtervalue, all, minvalCoreCount, maxvalCoreCount]);
 
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
