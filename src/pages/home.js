@@ -30,18 +30,6 @@ export default function Home() {
           };
           return t;
         });
-
-        // if (filtervalue === "") {
-        //   setShowdata(tmp);
-        //   setCount(response.data.count);
-        // } else {
-        //   const filtered = tmp.filter((item) =>
-        //     item.title.toLowerCase().includes(filtervalue.toLowerCase())
-        //   );
-        //   setShowdata(filtered);
-        //   setCount(filtered.length);
-        // }
-        // setAll(tmp);
         setShowdata(tmp);
         console.log(response.data.data);
         setCount(response.data.count);
@@ -50,40 +38,14 @@ export default function Home() {
         console.error("Error fetching data:", error);
       }
     };
-    // fetchData();
+    fetchData(); 
     const interval = setInterval(() => {
-      fetchData(); // Call fetchData every 1 minute (60000 milliseconds)
+      fetchData(); 
     }, 60000);
-
     return () => {
-      clearInterval(interval); // Clear the interval on component unmount
+      clearInterval(interval); 
     };
   }, []);
-  // useEffect(() => {
-  //   setShowdata(all);
-  // }, [all]);
-
-  // useEffect(() => {
-  //   const filterData = (value, list) => {
-  //     if (value === "") {
-  //       return list;
-  //     } else {
-  //       const filtered = list.filter((item) =>
-  //         item.title.toLowerCase().includes(filtervalue.toLowerCase())
-  //       );
-  //       const x = filtered.filter(
-  //         (item) =>
-  //           parseInt(item.cores) > parseInt(minvalCoreCount) &&
-  //           parseInt(item.cores) < parseInt(maxvalCoreCount)
-  //       );
-  //       return filtered;
-  //     }
-  //   };
-  //   let x = filterData(filtervalue, all);
-  //   setShowdata(x);
-  //   setCount(x.length)
-  // }, [filtervalue, minvalCoreCount, maxvalCoreCount]);
-
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
     setMaxvalCoreCount(newMaxval);
@@ -99,8 +61,6 @@ export default function Home() {
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
-      const cpuid = item._id;
-      // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
       let t = {
         id: item._id,
         img: item.imgurl,
@@ -118,12 +78,10 @@ export default function Home() {
       `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
     );
     // const response = await axios.get("http://localhost:5000/api/alldata");
-    // console.log(response.data.data);
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
       const cpuid = item._id;
-      // let ar = response.data.vendor.filter((item) => item.cpuid === cpuid);
       let t = {
         id: item._id,
         img: item.imgurl,
