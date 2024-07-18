@@ -108,7 +108,7 @@ export default function Home() {
     );
     // const response = await axios.get("http://localhost:5000/api/alldata");
     console.log(response.data.data);
-    seCount(response.data.count);
+    setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
       const cpuid = item._id;
@@ -132,7 +132,7 @@ export default function Home() {
     );
     // const response = await axios.get("http://localhost:5000/api/alldata");
     // console.log(response.data.data);
-    seCount(response.data.count);
+    setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
       const cpuid = item._id;
