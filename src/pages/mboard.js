@@ -14,10 +14,10 @@ export default function Mboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://103.35.189.49:5000/api/allmdata"
-        );
-        // const response = await axios.get("http://localhost:5000/api/allmdata");
+        // const response = await axios.get(
+        //   "http://103.35.189.49:5000/api/allmdata"
+        // );
+        const response = await axios.get("http://localhost:5000/api/allmdata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const mboardid = item._id;
