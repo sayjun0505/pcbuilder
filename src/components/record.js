@@ -8,6 +8,7 @@ export default function Record(propss) {
     if(loc=="ram")navigate("/ramdetail", { state: data });
     if(loc=="case")navigate("/casedetail", { state: data });
     if(loc=="gpu")navigate("/gpudetail", { state: data });
+    if(loc=="storage")navigate("/storagedetail", { state: data });
   };
   return (
     <div

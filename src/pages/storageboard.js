@@ -15,10 +15,10 @@ export default function Storageboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(
-        //   "http://103.35.189.49:5000/api/allsdata"
-        // );
-        const response = await axios.get("http://localhost:5000/api/allsdata");
+        const response = await axios.get(
+          "http://103.35.189.49:5000/api/allsdata"
+        );
+        // const response = await axios.get("http://localhost:5000/api/allsdata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const mboardid = item._id;
@@ -26,7 +26,7 @@ export default function Storageboard() {
           let t = {
             id: item._id,
             img: item.imgurl,
-            title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+            title: item.name,
             detail: item.detail,
             link: item.link,
             price: item.price
@@ -57,10 +57,10 @@ export default function Storageboard() {
   
   const init=async()=>{
     setFiltervalue("");
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allsdata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allsdata?filter=`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allsdata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -78,10 +78,10 @@ export default function Storageboard() {
     setShowdata(tmp);
   }
   const FilterProcess=async()=>{
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allsdata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allsdata?filter=${filtervalue}`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allsdata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
@@ -89,7 +89,7 @@ export default function Storageboard() {
       let t = {
         id: item._id,
         img: item.imgurl,
-        title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+        title: item.name,
         detail: item.detail,
         link: item.link,
         price: item.price
@@ -247,7 +247,7 @@ export default function Storageboard() {
             </div>
           </div> */}
         </div>
-        {showdata && <Infotable datas={showdata} loc="ram"/>}
+        {showdata && <Infotable datas={showdata} loc="storage"/>}
       </div>
     </div>
   );

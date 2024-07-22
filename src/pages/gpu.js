@@ -15,10 +15,10 @@ export default function GPU() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(
-        //   "http://103.35.189.49:5000/api/allsdata"
-        // );
-        const response = await axios.get("http://localhost:5000/api/allgpudata");
+        const response = await axios.get(
+          "http://103.35.189.49:5000/api/allgpudata"
+        );
+        // const response = await axios.get("http://localhost:5000/api/allgpudata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const mboardid = item._id;
@@ -57,10 +57,10 @@ export default function GPU() {
   
   const init=async()=>{
     setFiltervalue("");
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allgpudata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allgpudata?filter=`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allgpudata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -78,10 +78,10 @@ export default function GPU() {
     setShowdata(tmp);
   }
   const FilterProcess=async()=>{
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allgpudata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allgpudata?filter=${filtervalue}`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allgpudata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {

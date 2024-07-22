@@ -15,10 +15,10 @@ export default function Case() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(
-        //   "http://103.35.189.49:5000/api/allcasedata"
-        // );
-        const response = await axios.get("http://localhost:5000/api/allcasedata");
+        const response = await axios.get(
+          "http://103.35.189.49:5000/api/allcasedata"
+        );
+        // const response = await axios.get("http://localhost:5000/api/allcasedata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const mboardid = item._id;
@@ -57,10 +57,10 @@ export default function Case() {
   
   const init=async()=>{
     setFiltervalue("");
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allcasedata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allcasedata?filter=`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allcasedata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -78,10 +78,10 @@ export default function Case() {
     setShowdata(tmp);
   }
   const FilterProcess=async()=>{
-    // const response = await axios.get(
-    //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
-    // );
-    const response = await axios.get("http://localhost:5000/api/allcasedata");
+    const response = await axios.get(
+      `http://103.35.189.49:5000/api/allcasedata?filter=${filtervalue}`
+    );
+    // const response = await axios.get("http://localhost:5000/api/allcasedata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
