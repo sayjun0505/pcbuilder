@@ -362,7 +362,80 @@ export default function Topbar() {
             </Link>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+            <Link
+              to="/ramboard"
+              onClick={() => setShowproducts(false)}
+              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
+            >
+              <span>Memory</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/memory.png"
+              />
+            </Link>
+            <Link
+              to="/storageboard"
+              onClick={() => setShowproducts(false)}
+              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
+            >
+              <span>Storage</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/storage.png"
+              />
+            </Link>
+
+          
+            
+          </div>
+          <div className="flex flex-col gap-4">
+
+          <Link
+              to="/case"
+              onClick={() => setShowproducts(false)}
+              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
+            >
+              <span>Case</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/case.png"
+              />
+            </Link>
+
+
+
+          {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+              <span>Case</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/case.png"
+              />
+            </div> */}
+
+<Link
+              to="/gpu"
+              onClick={() => setShowproducts(false)}
+              className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center"
+            >
+              <span>Graphic Card</span>
+              <img
+                className="w-20 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/graphics-card.png"
+              />
+            </Link>
+
+
+            {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Graphic Card</span>
               <img
                 className="w-20 h-20"
@@ -371,35 +444,12 @@ export default function Topbar() {
                 src="https://static.pcbuilder.net/assets/images/megamenu/graphics-card.png"
               />
             </div>
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
-              <span>CPU Cooler</span>
-              <img
-                className="w-24 h-20"
-                alt="cpu, processor, pc builder, pc part picker, build my pc"
-                data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/cpu-cooler.png"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-4">
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
-              <span>Power Supply</span>
-              <img
-                className="w-20 h-20"
-                alt="cpu, processor, pc builder, pc part picker, build my pc"
-                data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/power-supply.png"
-              />
-            </div>
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
-              <span>Storage</span>
-              <img
-                className="w-20 h-20"
-                alt="cpu, processor, pc builder, pc part picker, build my pc"
-                data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/storage.png"
-              />
-            </div>
+ */}
+
+
+
+
+
 
             {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Motherboard</span>
@@ -412,16 +462,33 @@ export default function Topbar() {
             </div> */}
           </div>
           <div className="flex flex-col gap-4">
-            <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
-              <span>Case</span>
+           
+
+
+
+          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+              <span>Power Supply</span>
               <img
                 className="w-20 h-20"
                 alt="cpu, processor, pc builder, pc part picker, build my pc"
                 data-ll-status="loaded"
-                src="https://static.pcbuilder.net/assets/images/megamenu/case.png"
+                src="https://static.pcbuilder.net/assets/images/megamenu/power-supply.png"
               />
             </div>
+
+
+
             <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+              <span>CPU Cooler</span>
+              <img
+                className="w-24 h-20"
+                alt="cpu, processor, pc builder, pc part picker, build my pc"
+                data-ll-status="loaded"
+                src="https://static.pcbuilder.net/assets/images/megamenu/cpu-cooler.png"
+              />
+            </div>
+
+            {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Memory</span>
               <img
                 className="w-20 h-20"
@@ -429,7 +496,7 @@ export default function Topbar() {
                 data-ll-status="loaded"
                 src="https://static.pcbuilder.net/assets/images/megamenu/memory.png"
               />
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col justify-between mr-16">
             <div className="flex flex-col items-start gap-2">

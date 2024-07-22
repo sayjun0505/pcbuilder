@@ -53,10 +53,10 @@ export default function Home() {
   
   const init=async()=>{
     setFiltervalue("");
-    const response = await axios.get(
-      `http://103.35.189.49:5000/api/alldata?filter=`
-    );
-    // const response = await axios.get("http://localhost:5000/api/alldata");
+    // const response = await axios.get(
+    //   `http://103.35.189.49:5000/api/alldata?filter=`
+    // );
+    const response = await axios.get("http://localhost:5000/api/alldata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -74,10 +74,10 @@ export default function Home() {
     setShowdata(tmp);
   }
   const FilterProcess=async()=>{
-    const response = await axios.get(
-      `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
-    );
-    // const response = await axios.get("http://localhost:5000/api/alldata");
+    // const response = await axios.get(
+    //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
+    // );
+    const response = await axios.get("http://localhost:5000/api/alldata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {

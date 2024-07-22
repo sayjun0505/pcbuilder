@@ -3,7 +3,7 @@ import Filters from "../components/filters";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function Mboard() {
+export default function GPU() {
   const [filtervalue, setFiltervalue] = useState("");
   const [showdata, setShowdata] = useState([]);
   const [all, setAll] = useState([]);
@@ -16,9 +16,9 @@ export default function Mboard() {
     const fetchData = async () => {
       try {
         // const response = await axios.get(
-        //   "http://103.35.189.49:5000/api/allmdata"
+        //   "http://103.35.189.49:5000/api/allsdata"
         // );
-        const response = await axios.get("http://localhost:5000/api/allmdata");
+        const response = await axios.get("http://localhost:5000/api/allgpudata");
         // console.log(response.data.data)
         const tmp = response.data.data.map((item, index) => {
           const mboardid = item._id;
@@ -60,7 +60,7 @@ export default function Mboard() {
     // const response = await axios.get(
     //   `http://103.35.189.49:5000/api/alldata?filter=`
     // );
-    const response = await axios.get("http://localhost:5000/api/allmdata");
+    const response = await axios.get("http://localhost:5000/api/allgpudata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -68,7 +68,7 @@ export default function Mboard() {
       let t = {
         id: item._id,
         img: item.imgurl,
-        title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+        title: item.name,
         detail: item.detail,
         link: item.link,
         price: item.price
@@ -81,7 +81,7 @@ export default function Mboard() {
     // const response = await axios.get(
     //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
     // );
-    const response = await axios.get("http://localhost:5000/api/allmdata");
+    const response = await axios.get("http://localhost:5000/api/allgpudata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
@@ -89,7 +89,7 @@ export default function Mboard() {
       let t = {
         id: item._id,
         img: item.imgurl,
-        title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+        title: item.name,
         detail: item.detail,
         link: item.link,
         price: item.price
@@ -247,7 +247,7 @@ export default function Mboard() {
             </div>
           </div> */}
         </div>
-        {showdata && <Infotable datas={showdata} loc="mboard"/>}
+        {showdata && <Infotable datas={showdata} loc="gpu"/>}
       </div>
     </div>
   );

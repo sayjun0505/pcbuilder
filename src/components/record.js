@@ -5,6 +5,9 @@ export default function Record(propss) {
   const detail = (data,loc) => {
     if(loc=="cpu")navigate("/info", { state: data });
     if(loc=="mboard")navigate("/mdetail", { state: data });
+    if(loc=="ram")navigate("/ramdetail", { state: data });
+    if(loc=="case")navigate("/casedetail", { state: data });
+    if(loc=="gpu")navigate("/gpudetail", { state: data });
   };
   return (
     <div
