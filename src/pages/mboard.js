@@ -83,7 +83,7 @@ export default function Mboard() {
     );
     // const response = await axios.get("http://localhost:5000/api/allmdata");
     setCount(response.data.count);
-
+    console.log(response)
     const tmp = response.data.data.map((item, index) => {
       const cpuid = item._id;
       let t = {

@@ -466,7 +466,7 @@ export default function Topbar() {
 
 
 
-          <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
+          {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Power Supply</span>
               <img
                 className="w-20 h-20"
@@ -486,7 +486,7 @@ export default function Topbar() {
                 data-ll-status="loaded"
                 src="https://static.pcbuilder.net/assets/images/megamenu/cpu-cooler.png"
               />
-            </div>
+            </div> */}
 
             {/* <div className="border-b-4  border-t-[2px] border-r-[2px] border-l-[2px] w-40 h-40 shadow-md hover:shadow-4xl hover:cursor-pointer border-[#04151f] hover:border-[#18AE91] rounded-md flex flex-col gap-2 justify-center items-center">
               <span>Memory</span>
