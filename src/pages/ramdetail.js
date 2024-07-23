@@ -98,7 +98,7 @@ export default function Ramdetail() {
                         key={item.cpuid}
                       >
                         <a
-                          href={item.directlink}
+                          href={item.alink}
                           className="w-2/5 px-4  line-clamp-2 text-xl"
                         >
                           {item.displayname
