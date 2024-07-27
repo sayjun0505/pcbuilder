@@ -9,16 +9,17 @@ export default function Home() {
   const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
-  const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
-
+  const [curpage, setCurpage] = useState(1);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // const response = await axios.get(
+        //   `http://103.35.189.49:5000/api/alldata?filter=`
+        // );
         const response = await axios.get(
-          `http://103.35.189.49:5000/api/alldata?filter=`
+          "http://localhost:5000/api/alldata?filter="
         );
-        // const response = await axios.get("http://localhost:5000/api/alldata");
         const tmp = response.data.data.map((item, index) => {
           let t = {
             id: item._id,
@@ -33,30 +34,31 @@ export default function Home() {
         setShowdata(tmp);
         console.log(response.data.data);
         setCount(response.data.count);
-        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    FilterProcess(); 
+    FilterProcess();
     const interval = setInterval(() => {
-      FilterProcess(); 
+      FilterProcess();
     }, 60000);
     return () => {
-      clearInterval(interval); 
+      clearInterval(interval);
     };
   }, []);
   const handleCoreCountValuesChange = (newMinval, newMaxval) => {
     setMinvalCoreCount(newMinval);
     setMaxvalCoreCount(newMaxval);
   };
-  
-  const init=async()=>{
+
+  const init = async () => {
     setFiltervalue("");
+    // const response = await axios.get(
+    //   `http://103.35.189.49:5000/api/alldata?filter=`
+    // );
     const response = await axios.get(
-      `http://103.35.189.49:5000/api/alldata?filter=`
+      "http://localhost:5000/api/alldata?filter="
     );
-    // const response = await axios.get("http://localhost:5000/api/alldata");
     console.log(response.data.data);
     setCount(response.data.count);
 
@@ -72,12 +74,14 @@ export default function Home() {
       return t;
     });
     setShowdata(tmp);
-  }
-  const FilterProcess=async()=>{
+  };
+  const FilterProcess = async () => {
+    // const response = await axios.get(
+    //   `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
+    // );
     const response = await axios.get(
-      `http://103.35.189.49:5000/api/alldata?filter=${filtervalue}`
+      `http://localhost:5000/api/alldata?filter=${filtervalue}`
     );
-    // const response = await axios.get("http://localhost:5000/api/alldata");
     setCount(response.data.count);
 
     const tmp = response.data.data.map((item, index) => {
@@ -93,14 +97,55 @@ export default function Home() {
       return t;
     });
     setShowdata(tmp);
-  }
-  const itemsPerPage = 36;
-  const totalPages = Math.ceil(showdata.length / itemsPerPage);
-  const paginatedData = showdata.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  };
 
+  const prevPage = () => {
+    if (curpage != 1) setCurpage(curpage - 1);
+  };
+  const nextPage = () => {
+    if (curpage != Math.floor(count / 36 + 1)) setCurpage(curpage + 1);
+  };
+  const firstPage = () => {
+    setCurpage(1);
+  };
+  const lastPage = () => {
+    setCurpage(Math.floor(count / 36 + 1));
+  };
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    if (/^\d*$/.test(newValue)) {
+      setCurpage(newValue);
+    }
+    if (!newValue) setCurpage(1);
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log(`http://localhost:5000/api/alldata?curpage=${curpage}`);
+        const response = await axios.get(
+          `http://localhost:5000/api/alldata?curpage=${curpage}`
+        );
+
+        setCount(response.data.count);
+
+        const tmp = response.data.data.map((item) => {
+          return {
+            id: item._id,
+            img: item.imgurl,
+            title: item.name.replace("Cpu ", "").replace(" Processor", ""),
+            detail: item.detail,
+            link: item.link,
+            price: item.price
+          };
+        });
+        setShowdata(tmp);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [curpage]);
   return (
     <div className="md:mt-60 w-full flex flex-row justify-between">
       <div className="hidden md:flex w-1/4 h-screen">
@@ -127,12 +172,24 @@ export default function Home() {
                 value={filtervalue}
                 onChange={(event) => setFiltervalue(event.target.value)}
               />
-              {filtervalue&&
-              <svg onClick={init} fill="#000000" className="h-6 w-6 hover:cursor-pointer" viewBox="0 0 492 492">
-              <path className="text-gray-800 fill-current" d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872 c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872 c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052 L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116 c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952 c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116 c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"></path>
-            </svg>}
+              {filtervalue && (
+                <svg
+                  onClick={init}
+                  fill="#000000"
+                  className="h-6 w-6 hover:cursor-pointer"
+                  viewBox="0 0 492 492"
+                >
+                  <path
+                    className="text-gray-800 fill-current"
+                    d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872 c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872 c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052 L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116 c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952 c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116 c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"
+                  ></path>
+                </svg>
+              )}
             </div>
-            <div className="flex justify-center w-20 border-2 rounded-lg h-12 border-gray-200 items-center hover:border-gray-500 hover:cursor-pointer" onClick={FilterProcess}>
+            <div
+              className="flex justify-center w-20 border-2 rounded-lg h-12 border-gray-200 items-center hover:border-gray-500 hover:cursor-pointer"
+              onClick={FilterProcess}
+            >
               <svg
                 width="24"
                 height="24"
@@ -158,10 +215,57 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="text-white flex flex-row gap-4 mr-12">
+          <div className="text-white flex flex-row gap-4 mr-12">
             <div
-              onClick={goToPrevPage}
+              onClick={() => firstPage(6)}
               className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
+              <svg
+                fill="#ffffff"
+                className="rotate-180 w-8 h-8"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M7.707 17.707 13.414 12 7.707 6.293 6.293 7.707 10.586 12l-4.293 4.293zM15 6h2v12h-2z" />
+              </svg>
+            </div>
+            <div
+              onClick={prevPage}
+              className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
+              <svg
+                viewBox="0 0 1024 1024"
+                className="w-4 h-4"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                stroke="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+                    fill="#ffffff"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <input
+              type="text"
+              className="w-12 rounded-md text-right px-2 text-gray-800 text-2xl"
+              value={curpage}
+              onChange={handleInputChange}
+            />
+            <div>/</div>
+            <div className="text-2xl">{Math.floor(count / 36 + 1)}</div>
+            <div
+              onClick={nextPage}
+              className="rotate-180 hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
             >
               <svg
                 viewBox="0 0 1024 1024"
@@ -185,52 +289,20 @@ export default function Home() {
                 </g>
               </svg>
             </div>
-            <div onClick={()=>goToPage(1)} className={`hover:cursor-pointer ${currentPage==1?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              1
-            </div>
-            <div onClick={()=>goToPage(2)} className={`hover:cursor-pointer ${currentPage==2?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              2
-            </div>
-            <div onClick={()=>goToPage(3)} className={`hover:cursor-pointer ${currentPage==3?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              3
-            </div>
-            <div onClick={()=>goToPage(4)} className={`hover:cursor-pointer ${currentPage==4?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              4
-            </div>
-            <div onClick={()=>goToPage(5)} className={`hover:cursor-pointer ${currentPage==5?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              5
-            </div>
-            <div onClick={()=>goToPage(6)} className={`hover:cursor-pointer ${currentPage==6?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              6
-            </div>
             <div
-              onClick={goToNextPage}
+              onClick={() => lastPage()}
               className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
             >
               <svg
-                viewBox="0 0 1024 1024"
-                className="w-4 h-4"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
                 fill="#ffffff"
-                stroke="#ffffff"
-                transform="matrix(-1, 0, 0, 1, 0, 0)"
+                className="w-8 h-8"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
-                    fill="#ffffff"
-                  ></path>
-                </g>
+                <path d="M7.707 17.707 13.414 12 7.707 6.293 6.293 7.707 10.586 12l-4.293 4.293zM15 6h2v12h-2z" />
               </svg>
             </div>
-          </div> */}
+          </div>
         </div>
         {showdata && <Infotable datas={showdata} loc="cpu" />}
       </div>
