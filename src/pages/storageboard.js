@@ -36,8 +36,9 @@ export default function Storageboard() {
   useEffect(() => {  
     const fetchData = async () => {  
         try {  
-          console.log(`http://localhost:5000/api/allsdata?curpage=${curpage}`)
-            const response = await axios.get(`http://localhost:5000/api/allsdata?curpage=${curpage}`);  
+            // const response = await axios.get(`http://localhost:5000/api/allsdata?curpage=${curpage}`);  
+            const response = await axios.get(`http://103.35.189.49:5000/api/allsdata?curpage=${curpage}`);  
+            
 
             setCount(response.data.count);  
 

@@ -16,7 +16,6 @@ export default function Ramdetail() {
     const fetchData = async () => {
       try {
         // const url = `http://localhost:5000/api/rspec?id=${seletected}`;
-        console.log(seletected)
         const url = `http://103.35.189.49:5000/api/rspec?id=${seletected}`;
         const response = await axios.get(url);
         const view = response.data;

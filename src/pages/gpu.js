@@ -35,8 +35,8 @@ export default function GPU() {
   useEffect(() => {  
     const fetchData = async () => {  
         try {  
-          console.log(`http://localhost:5000/api/allgpudata?curpage=${curpage}`)
-            const response = await axios.get(`http://localhost:5000/api/allgpudata?curpage=${curpage}`);  
+          // const response = await axios.get(`http://localhost:5000/api/allgpudata?curpage=${curpage}`);  
+          const response = await axios.get(`http://103.35.189.49:5000/api/allgpudata?curpage=${curpage}`);  
 
             setCount(response.data.count);  
 

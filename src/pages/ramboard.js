@@ -79,8 +79,8 @@ export default function Ramboard() {
   useEffect(() => {  
     const fetchData = async () => {  
         try {  
-          console.log(`http://localhost:5000/api/allrdata?curpage=${curpage}`)
-            const response = await axios.get(`http://localhost:5000/api/allrdata?curpage=${curpage}`);  
+            // const response = await axios.get(`http://localhost:5000/api/allrdata?curpage=${curpage}`);  
+            const response = await axios.get(`http://103.35.189.49:5000/api/allrdata?curpage=${curpage}`);  
 
             setCount(response.data.count);  
 
