@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 export default function Storageboard() {
   const [filtervalue, setFiltervalue] = useState("");
   const [showdata, setShowdata] = useState([]);
-  const [all, setAll] = useState([]);
   const [minvalCoreCount, setMinvalCoreCount] = useState(1);
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const [currentPage, setCurrentPage] = useState(1);
