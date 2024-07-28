@@ -11,7 +11,53 @@ export default function GPU() {
   const [maxvalCoreCount, setMaxvalCoreCount] = useState(100);
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
+  const [curpage, setCurpage] = useState(1);  
+  const prevPage=()=>{
+    if(curpage!=1)setCurpage(curpage-1)
+  }
+  const nextPage=()=>{
+    if(curpage!=Math.floor(count / 36 + 1))setCurpage(curpage+1)
+  }
+  const firstPage=()=>{
+    setCurpage(1)
+  }
+  const lastPage=()=>{
+    setCurpage(Math.floor(count / 36 + 1))
+  }
+  const handleInputChange = (event) => {  
+      const newValue = event.target.value;   
+      if (/^\d*$/.test(newValue)) {  
+        setCurpage(newValue);  
+        
+      }  
+      if(!newValue)setCurpage(1)
+  };  
+  useEffect(() => {  
+    const fetchData = async () => {  
+        try {  
+          console.log(`http://localhost:5000/api/allgpudata?curpage=${curpage}`)
+            const response = await axios.get(`http://localhost:5000/api/allgpudata?curpage=${curpage}`);  
 
+            setCount(response.data.count);  
+
+            const tmp = response.data.data.map((item) => {  
+                return {  
+                    id: item._id,  
+                    img: item.imgurl,  
+                    title: item.name.replace("Cpu ", "").replace(" Processor", ""),  
+                    detail: item.detail,  
+                    link: item.link,  
+                    price: item.price  
+                };  
+            });  
+            setShowdata(tmp);  
+        } catch (error) {  
+            console.error("Error fetching data:", error);  
+        }  
+    };  
+
+    fetchData();  
+}, [curpage]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -173,10 +219,57 @@ export default function GPU() {
             </div>
           </div>
 
-          {/* <div className="text-white flex flex-row gap-4 mr-12">
+          <div className="text-white flex flex-row gap-4 mr-12">
             <div
-              onClick={goToPrevPage}
+              onClick={() => firstPage(6)}
               className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
+              <svg
+                fill="#ffffff"
+                className="rotate-180 w-8 h-8"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M7.707 17.707 13.414 12 7.707 6.293 6.293 7.707 10.586 12l-4.293 4.293zM15 6h2v12h-2z" />
+              </svg>
+            </div>
+            <div
+              onClick={prevPage}
+              className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
+            >
+              <svg
+                viewBox="0 0 1024 1024"
+                className="w-4 h-4"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                stroke="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+                    fill="#ffffff"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <input
+              type="text"
+              className="w-12 rounded-md text-right px-2 text-gray-800 text-2xl"
+              value={curpage}
+              onChange={handleInputChange}
+            />
+            <div>/</div>
+            <div className="text-2xl">{Math.floor(count / 36 + 1)}</div>
+            <div
+              onClick={nextPage}
+              className="rotate-180 hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
             >
               <svg
                 viewBox="0 0 1024 1024"
@@ -200,52 +293,20 @@ export default function GPU() {
                 </g>
               </svg>
             </div>
-            <div onClick={()=>goToPage(1)} className={`hover:cursor-pointer ${currentPage==1?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              1
-            </div>
-            <div onClick={()=>goToPage(2)} className={`hover:cursor-pointer ${currentPage==2?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              2
-            </div>
-            <div onClick={()=>goToPage(3)} className={`hover:cursor-pointer ${currentPage==3?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              3
-            </div>
-            <div onClick={()=>goToPage(4)} className={`hover:cursor-pointer ${currentPage==4?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              4
-            </div>
-            <div onClick={()=>goToPage(5)} className={`hover:cursor-pointer ${currentPage==5?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              5
-            </div>
-            <div onClick={()=>goToPage(6)} className={`hover:cursor-pointer ${currentPage==6?'bg-gray-500':'bg-none'} border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500`}>
-              6
-            </div>
             <div
-              onClick={goToNextPage}
+              onClick={() => lastPage()}
               className="hover:cursor-pointer border-2 border-white rounded-full w-8 h-8 text-center hover:bg-gray-500 flex justify-center items-center"
             >
               <svg
-                viewBox="0 0 1024 1024"
-                className="w-4 h-4"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
                 fill="#ffffff"
-                stroke="#ffffff"
-                transform="matrix(-1, 0, 0, 1, 0, 0)"
+                className="w-8 h-8"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
-                    fill="#ffffff"
-                  ></path>
-                </g>
+                <path d="M7.707 17.707 13.414 12 7.707 6.293 6.293 7.707 10.586 12l-4.293 4.293zM15 6h2v12h-2z" />
               </svg>
             </div>
-          </div> */}
+          </div>
         </div>
         {showdata && <Infotable datas={showdata} loc="gpu"/>}
       </div>
